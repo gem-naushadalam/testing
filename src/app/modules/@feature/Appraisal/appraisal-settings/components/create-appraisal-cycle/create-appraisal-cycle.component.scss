@@ -1,0 +1,90 @@
+.main {
+  .items {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    .item {
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+    .country {
+      background-color: #fff;
+      width: 304px;
+      height: 45px;
+      border-radius: 6px;
+      box-sizing: border-box;
+      box-shadow: -11px 9px 21px rgba(173, 182, 217, 0.170884);
+      margin-top: 10px;
+      padding-left: 10px;
+      line-height: 15px;
+      padding-right: 10px;
+      border-color: white;
+    }
+    .month {
+      background-color: #fff;
+      width: 304px;
+      height: 45px;
+      border-radius: 6px;
+      box-sizing: border-box;
+      box-shadow: -11px 9px 21px rgba(173, 182, 217, 0.170884);
+      margin-top: 10px;
+      padding-left: 10px;
+      line-height: 15px;
+      padding-right: 10px;
+      border-color: white;
+    }
+    .year {
+      background-color: #fff;
+      width: 304px;
+      height: 45px;
+      border-radius: 6px;
+      box-sizing: border-box;
+      box-shadow: -11px 9px 21px rgba(173, 182, 217, 0.170884);
+      margin-top: 10px;
+      padding-left: 10px;
+      line-height: 15px;
+      padding-right: 10px;
+      border-color: white;
+    }
+  }
+  .button-wrapper {
+    display: flex;
+
+    padding: 25px 0;
+
+    button {
+      margin: 0 10px;
+    }
+    .save_btn {
+      border: 0;
+      height: 40px;
+      width: 100px;
+      background: #07c80b;
+      color: #fff;
+      font-size: 12px;
+      line-height: 1;
+      padding: 10px 25px;
+      border-radius: 6px;
+      // margin-left: 25px !important;
+      font-family: "Montserrat", sans-serif;
+      box-shadow: -11px 9px 21px rgba(173, 182, 217, 0.170884);
+    }
+
+    .close_btn {
+      height: 40px;
+      width: 100px;
+      border: 0;
+      outline: none;
+      background: #f70329;
+      color: #fff;
+      font-size: 12px;
+      line-height: 1;
+      padding: 10px 25px;
+      border-radius: 6px;
+      font-family: "Montserrat", sans-serif;
+    }
+  }
+}
+select.ng-touched.ng-invalid {
+  border: 1px solid red !important;
+}

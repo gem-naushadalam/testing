@@ -1,0 +1,76 @@
+<app-breadcrumb></app-breadcrumb>
+<form  [formGroup] = "addVertical" (ngSubmit)="onSubmit()">
+<div class="main">
+    <div class="items">
+        <div class="item">
+            <div class="head">
+                <span>VERTICAL NAME</span>
+            </div>
+            <div class="input">
+                <input class="name" type="text" placeholder="Vertical Name" formControlName="verticalName">
+            </div>
+            <span
+            class="text-danger"
+            *ngIf="
+              addVertical.controls['verticalName'].hasError('required') &&
+              addVertical.controls['verticalName'].touched
+            "
+            >Vertical Name is required</span>
+
+        </div>
+        <div class="item" style="margin-left: 20px;">
+            <div class="head">
+                <span>OWNER</span>
+            </div>
+            <div class="search-input input" >
+              <input type="text" placeholder="Owner" (keyup)="call($event)" (focus)=show($event) (focusout) = hide($event) formControlName="ownerName">
+              <div (mouseenter) = "divShow()" (mouseleave) = "divHide()">
+              <div class ="owner" *ngIf = "showDiv">
+              <div class="owner-inner"  *ngFor="let data of emptyArray" (click) ="onOwnerSelection(data)">
+                <img
+                width="30"
+                height="30"
+                src="{{ data.imagePath }}"
+                style="
+                  margin-right: 10px;
+                  border-radius: 15px;
+                "
+              />
+              <div>
+              <div>{{ data.employeeName }}</div>
+              <div>{{ data.email }}</div>
+              </div>
+              </div>
+              </div>
+              </div>
+            </div>
+            <span
+            class="text-danger"
+            *ngIf="
+              addVertical.controls['ownerName'].hasError('required') &&
+              addVertical.controls['ownerName'].touched
+            "
+            >Owner Name is required</span>
+          </div>
+        <div class="item">
+            <div class="head">
+                <span>Description</span>
+            </div>
+            <div class="input">
+                <textarea cols="30" rows="30" class="textarea" type="text" formControlName = "description" placeholder="Description"></textarea>
+            </div>
+            <span
+            class="text-danger"
+            *ngIf="
+              addVertical.controls['description'].hasError('required') &&
+              addVertical.controls['description'].touched
+            "
+            >Description is required</span>
+        </div>
+    </div>
+    <div class="button-wrapper">
+        <button class="save_btn btn btn-success" type="submit" [disabled] = "!addVertical.valid">CREATE</button>
+      </div>
+
+</div>
+</form>

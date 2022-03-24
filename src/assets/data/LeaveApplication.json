@@ -1,0 +1,21 @@
+{
+    "userId": 2839,
+    "createdBy": "76",
+    "lastModifiedBy": "45",
+    "firstDayHalfDay":true,
+    "lastDayHalfDay":true,
+    "alternativeContactNo":999999999,
+    "approverId":null,
+    "approverRemarks":null,
+    "fromDateId":7,
+    "availableOnEmail":false,
+    "availableOnMobile":true,
+    "primaryContactNo":9999999999,
+    "reason": "Test",
+    "statusId":null,
+    "tillDateId":9,
+    "leaveMapping": {
+        "CL": 1.5,
+        "PL": 0.5
+    }
+}

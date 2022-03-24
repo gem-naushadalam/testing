@@ -1,0 +1,52 @@
+<!-- Main Div -->
+
+<div class="main">
+  <!-- Button Div -->
+
+  <div class="buttons">
+    <ul class="nav">
+      <li class="nav-item" *ngFor="let menuList of menuLists">
+        <a
+          class="nav-link btn-primary"
+          (click)="openMenuList(menuList)"
+          [ngClass]="{ active: selectedList === menuList }"
+          >{{ menuList }}</a
+        >
+      </li>
+    </ul>
+  </div>
+
+  <!-- Right Div -->
+
+  <div class="right">
+    <span class="left">{{CL}}</span>
+    <span class="txt">CL</span>
+    <span class="a">|</span>
+    <span class="left">{{PL}}</span>
+    <span class="txt">PL</span>
+    <span class="a">|</span>
+    <span class="left">{{COFF}}</span>
+    <span class="txt">COFF</span>
+  </div>
+  <!-- Main Div Ends -->
+</div>
+
+<!-- Leave Request Div -->
+
+<div>
+  <ng-container *ngIf="selectedList === 'Leave'">
+    <app-leave-request (dataAfterPostLeave) =  "changeLeaveValues($event)"></app-leave-request>
+  </ng-container>
+  <ng-container *ngIf="selectedList === 'WFH'">
+    <app-wfh-request></app-wfh-request>
+  </ng-container>
+  <ng-container *ngIf="selectedList === 'Comp Off'">
+    <app-comp-off-request></app-comp-off-request>
+  </ng-container>
+  <ng-container *ngIf="selectedList === 'Out Duty'">
+    <app-out-duty-request></app-out-duty-request>
+  </ng-container>
+  <ng-container *ngIf="selectedList === 'LNSA'">
+    <app-lnsa></app-lnsa>
+  </ng-container>
+</div>

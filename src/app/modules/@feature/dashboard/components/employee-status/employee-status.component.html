@@ -1,0 +1,103 @@
+<div class="dashboard_top_inner">
+  <!-- Today Circle -->
+  <div class="today">
+    <div class="today_inner">
+      <div class="left">
+        <div class="hour_circle">
+          <p>8</p>
+          <span>Hours</span>
+        </div>
+        <div class="day">
+          <span>Today</span>
+        </div>
+      </div>
+      <div class="right">
+        <div class="in_time">
+          <span>In Time</span>
+          <p>10:00 A.M</p>
+        </div>
+        <div class="out_time">
+          <span>Out Time</span>
+          <p>06:00 P.M</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Yesterday Circle -->
+  <div class="yesterday">
+    <div class="yesterday_inner">
+      <div class="left">
+        <div class="hour_circle">
+          <p>3.5</p>
+          <span>Hours</span>
+        </div>
+        <div class="day">
+          <span>Yesterday</span>
+        </div>
+      </div>
+      <div class="right">
+        <div class="in_time">
+          <span>In Time</span>
+          <p>10:00 A.M</p>
+        </div>
+        <div class="out_time">
+          <span>Out Time</span>
+          <p>06:00 P.M</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Average Circle -->
+  <div class="average">
+    <div class="average_inner">
+      <div class="left">
+        <div class="hour_circle">
+          <p>7.5</p>
+          <span>Hours</span>
+        </div>
+        <div class="day">
+          <span>Average</span>
+        </div>
+      </div>
+      <div class="right">
+        <p>January</p>
+        <span>
+          <fa-icon [icon]="faChevronDown"></fa-icon>
+          <!-- <i class="fas fa-chevron-down fa-lg">fa-lg</i> -->
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Total Leave Circle -->
+  <div class="leave">
+    <div class="leave_inner">
+      <div class="left">
+        <div class="hour_circle">
+          <p>{{total}}</p>
+          <span>Total</span>
+        </div>
+        <div class="day">
+          <span>Leave</span>
+        </div>
+      </div>
+      <div class="right">
+        <div class="leave_number">
+          <p>{{CL}}</p>
+          <p>{{PL}}</p>
+          <p>{{COFF}}</p>
+        </div>
+        <div class="leave_type">
+          <span>CL</span>
+          <span>PL</span>
+          <span>Comp-off</span>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="btn_wrapper">
+      <button (click) ="navigateLeave()">APPLY</button>
+    </div> -->
+  </div>
+</div>

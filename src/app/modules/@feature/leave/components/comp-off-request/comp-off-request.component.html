@@ -1,0 +1,57 @@
+<div class="main_wrapper">
+  <form [formGroup] = "submitCoff" (ngSubmit)=onPostCoff()>
+  <div class="inner">
+    <div class="left">
+      <div class="calendar">
+        <mat-calendar
+        [selected]="selectedDate"
+        (selectedChange)="onSelect($event)"
+        [dateFilter]="filterDates"
+        [minDate]="startDate"
+      ></mat-calendar>
+      </div>
+      <div class="info"  *ngIf = "selectedDate" >
+        <!-- <span class="Attention">Info: </span> -->
+        <span  class="s">*You are taking COFF for {{ selectedDate | date: "yyyy-MM-dd" }}</span>
+      </div>
+    </div>
+    <div class="right">
+      <div class="button-reason">
+      <div class="reason_wrapper">
+        <label>Reason</label>
+        <div class="calc">
+        <textarea name="text" rows="4" formControlName = "reason" class="reasons" ></textarea>
+        </div>
+        <span class="text-danger" *ngIf="
+        submitCoff.controls['reason'].hasError('required') &&
+        submitCoff.controls['reason'].touched
+      ">Reason is required</span>
+      </div>
+      <div class="button">
+        <button type="button" class="btn btn-primary reset btn-lg" (click) = "reset()">RESET</button>
+        
+        <button type="submit" class="btn btn-success btn-lg" [disabled]="!submitCoff.valid || !selectedDate">
+          <span [matTooltip]="!submitCoff.valid ? 'Please select Date Range and Reason ' : ''" [matTooltipPosition]="'above'" [matTooltipClass]="'tooltip-pd'">APPLY</span></button>
+      </div>
+      </div>
+    </div>
+  </div>
+  </form>
+  <div class="btn-group-toggle button-top" data-toggle="buttons">
+    <label class="btn btn-primary btn-lg active" (click)="history()">
+      <input type="radio" name="options" id="option2" checked />
+      COFF History
+    </label>
+  
+    <label class="btn btn-primary btn-lg" (click)="status()">
+      <input type="radio" name="options" id="option2" />
+       Review Request
+    </label>
+  </div>
+  <div [hidden] = "!leave_history" style="margin-bottom: 20px;">
+    <app-table  class="w-100" [tableData]='tableData' [displayedColumns] = 'displayedColumns' ></app-table>  
+  </div>
+  <div [hidden] = "!review_status" style="margin-bottom: 20px;">
+    <app-review-table (approved) = approve($event) (rejected) = reject($event) (bulkApprove)="bulk($event)"  class = "w-100" [displayedColumns] = 'reviewdisplayedColumns' [tableData] = 'reviewData'></app-review-table>
+  </div>
+</div>

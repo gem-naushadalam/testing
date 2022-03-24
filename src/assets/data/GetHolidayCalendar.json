@@ -1,0 +1,26 @@
+[
+    {
+        "holiday_id": 1,
+        "holiday_name": "Republic Day",
+        "holiday_year": 2021,
+        "holiday_date": "2021-01-26",
+        "holiday_day": "Tue",
+        "holiday_tp": 1,
+        "created_by": "deepak.grover",
+        "created_date": "2021-01-22",
+        "updated_by": "deepak.grover",
+        "updated_date": "2021-01-22"
+    },
+    {
+        "holiday_id": 2,
+        "holiday_name": "Holi",
+        "holiday_year": 2021,
+        "holiday_date": "2021-03-29",
+        "holiday_day": "Monday",
+        "holiday_tp": 2,
+        "created_by": "deepak.grover",
+        "created_date": "2021-01-22",
+        "updated_by": "deepak.grover",
+        "updated_date": "2021-01-22"
+    }
+]

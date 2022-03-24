@@ -1,0 +1,36 @@
+<app-breadcrumb [item] = "check"></app-breadcrumb>
+<form [formGroup] = "addIndustry"(ngSubmit) = "onSubmitIndustry()" >
+<div class="item">
+    <div class="head">
+        <span>INDUSTRY NAME</span>
+    </div>
+    <div class="input">
+        <input class="name" type="text" placeholder="Industry Name" formControlName="industryName">
+    </div>
+    <span
+    class="text-danger"
+    *ngIf="
+    addIndustry.controls['industryName'].hasError('required') &&
+    addIndustry.controls['industryName'].touched
+    "
+    >Industry Name is required</span>
+</div>
+<div class="item">
+    <div class="head">
+        <span>Description</span>
+    </div>
+    <div class="input">
+        <textarea cols="30" rows="30" class="textarea" type="text" formControlName = "description" placeholder="Description"></textarea>
+    </div>
+    <span
+    class="text-danger"
+    *ngIf="
+    addIndustry.controls['description'].hasError('required') &&
+    addIndustry.controls['description'].touched
+    "
+    >Description is required</span>
+</div>
+<div class="button-wrapper">
+    <button class="save_btn btn btn-success" type="submit">CREATE</button>
+</div>
+</form>

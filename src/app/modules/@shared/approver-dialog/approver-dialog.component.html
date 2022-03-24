@@ -1,0 +1,18 @@
+<div class="content-container">
+  <div class="inner" mat-dialog-content [formGroup]="submitRemarks">
+    <div class="remarks-wrapper">
+      <span class="reason">Approver's Remarks</span>
+      <br />
+      <div class="text pt-3">
+        <textarea cols="30" rows="3" formControlName="remarks"></textarea>
+      </div>
+    </div>
+    <div class="message">{{ this.data?.message }}</div>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button class="snackbar-danger button" (click)="onNoClick()">
+      Cancel
+    </button>
+    <button mat-button class="button" (click)="closeDialog()">Confirm</button>
+  </div>
+</div>

@@ -1,0 +1,7 @@
+@import "../../../@shared/header/header.component.scss";
+
+::ng-deep .main_header {
+  .header_inner {
+    min-height: 110px !important;
+  }
+}

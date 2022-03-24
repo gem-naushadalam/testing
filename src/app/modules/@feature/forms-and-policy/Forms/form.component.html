@@ -1,0 +1,8 @@
+<div *ngIf="user ; then userblock else hrblock">
+</div>
+<ng-template #userblock>
+    <app-view-form></app-view-form>
+</ng-template>
+<ng-template #hrblock>
+    <app-hr-viewform></app-hr-viewform>
+</ng-template>

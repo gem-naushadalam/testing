@@ -1,0 +1,24 @@
+<div class="main">
+  <div class="inner">
+    <ul class="nav">
+      <li class="nav-item" *ngFor="let menuList of menuLists">
+        <a
+          class="nav-link btn-primary"
+          (click)="openMenuList(menuList)"
+          [ngClass]="{ active: selectedList === menuList }"
+          >{{ menuList }}</a
+        >
+      </li>
+    </ul>
+
+    <div>
+      <!-- <app-leave-request></app-leave-request> -->
+      <ng-container *ngIf="selectedList === 'Forms'">
+        <app-form></app-form>
+      </ng-container>
+      <ng-container *ngIf="selectedList === 'Policy'">
+        <app-main-policy></app-main-policy>
+      </ng-container>
+    </div>
+  </div>
+</div>

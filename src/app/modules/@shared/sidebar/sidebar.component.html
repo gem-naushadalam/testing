@@ -1,0 +1,260 @@
+<div class="sidebar_wrapper">
+  <div class="sidebar_main">
+    <div class="sidebar_inner">
+      <div class="logo" (click)="onLogoClick()">
+     
+
+        <img class="mis_logo" src="../../../../assets//img/logo mis.png" />
+        <!-- <img
+          class="gemini_logo_reverse"
+          src="../../../../assets//img/logo.png"
+          width="50px"
+          height="50px"
+        />
+           <img
+          class="gemini_logo"
+          [src]="geminiLogo"
+          width="50px"
+          height="50px"
+        /> -->
+      </div>
+      <div class="sidebar_user">
+        <img src={{profileImageUrl}} height="50px" width="50px" />
+        <h5>{{Name}}</h5>
+        <p>{{Designation}}</p>
+      </div>
+
+      <!-- Dashboard | Emp Directory | Timesheet | Leave | LNSA | Assest Allocation -->
+      <div class="sidebar_content_main">
+        <ul class="sidebar_content">
+          <li
+            class="sidebar_nav_content"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+          >
+            <a routerLink="/">
+              <span class="sidebar_icon">
+                <img src="../../../../assets/img/group.svg" />
+              </span>
+              <p class="sidebar_title">Dashboard</p>
+            </a>
+          </li>
+          <li class="sidebar_nav_content" routerLinkActive="active">
+            <a routerLink="/EmployeeDirectory">
+              <span class="sidebar_icon">
+                <img
+                  src="../../../../assets/img/telephone-directory-interface-symbol.svg"
+                />
+              </span>
+              <p class="sidebar_title">Employee Directory</p>
+            </a>
+          </li>
+          <!-- TimeSheet -->
+          <li class="sidebar_nav_content" routerLinkActive="active">
+            <a routerLink="/timesheet">
+              <span class="sidebar_icon">
+                <img src="../../../../assets/img/appointment.svg" />
+              </span>
+              <p class="sidebar_title">Timesheet</p>
+            </a>
+          </li>
+
+          <li class="sidebar_nav_content" routerLinkActive="active">
+            <a routerLink="/leave">
+              <span class="sidebar_icon">
+                <img src="../../../../assets/img/sunbed.svg" />
+              </span>
+              <p class="sidebar_title">Leave</p>
+              <span class="sidebar_arrow">
+                <!-- <fa-icon [icon]="faChevronRight"></fa-icon> -->
+              </span>
+            </a>
+          </li>
+          <!-- LNSA -->
+          <!-- <li class="sidebar_nav_content" routerLinkActive="active">
+            <a routerLink="#">
+              <span class="sidebar_icon">
+                <img src="../../../../assets/img/group-31.svg" />
+              </span>
+              <p class="sidebar_title">LNSA</p>
+              <span class="sidebar_arrow">
+                <fa-icon [icon]="faChevronRight"></fa-icon>
+              </span>
+            </a>
+          </li> -->
+
+          <!-- Assest Allocation -->
+          <!-- <li class="sidebar_nav_content" routerLinkActive="active">
+            <a routerLink="#">
+              <span class="sidebar_icon">
+                <img src="../../../../assets/img/pendrive.svg" />
+              </span>
+              <p class="sidebar_title">Assest Allocation</p>
+            </a>
+          </li> -->
+        </ul>
+
+        <!-- Management | Project Management | Team Management | Appraisal Management-->
+        <div class="sidebar_content">
+          <h4 class="content_heading">Management</h4>
+          <ul class="sidebar_content_common">
+            <li class="sidebar_nav_content" routerLinkActive="active">
+              <a routerLink="/project-management">
+                <span class="sidebar_icon">
+                  <img src="../../../../assets/img/project.svg" />
+                </span>
+                <p class="sidebar_title">Project Management</p>
+                <!-- <span class="sidebar_arrow">
+                  <fa-icon [icon]="faChevronRight"></fa-icon>
+                </span> -->
+              </a>
+            </li>
+              <!-- <li class="sidebar_nav_content" routerLinkActive="active">
+              <a routerLink="#">
+                <span class="sidebar_icon">
+                  <img src="../../../../assets/img/work-team.svg" />
+                </span>
+                <p class="sidebar_title">Team Management</p>
+                <span class="sidebar_arrow">
+                  <fa-icon [icon]="faChevronRight"></fa-icon>
+                </span>
+              </a>
+            </li>  -->
+            <li
+              expandMenu
+              class="sidebar_nav_content"
+              routerLinkActive="active"
+              (click)="activeProject()"
+            >
+              <a>
+                <span class="sidebar_icon">
+                  <img src="../../../../assets/img/statistics.svg" />
+                </span>
+                <p class="sidebar_title">Appraisal Management</p>
+                <span class="sidebar_arrow">
+                  <fa-icon [icon]="faChevronRight"></fa-icon>
+                </span>
+              </a>
+            </li>
+            <ul class="nav submenu">
+              <li class="nav-item" routerLinkActive="active">
+                <a routerLink="/appraisal-settings">
+                  <span>Appraisal Settings</span>
+                </a>
+              </li>
+              <li class="nav-item" routerLinkActive="active">
+                <a routerLink="/appraisal">
+                  <span>My Appraisal</span>
+                </a>
+              </li>
+              <li class="nav-item" routerLinkActive="active">
+                <a routerLink="/goal">
+                  <span>Goals</span>
+                </a>
+              </li>
+              <!-- <li class="nav-item" routerLinkActive="active">
+                <a>
+                  <span>Achievements</span>
+                </a>
+              </li> -->
+            </ul>
+          </ul>
+        </div>
+
+        <!-- Others | Forms | Policy | Knowledge Base | Feedback | Organisation Structure -->
+        <div class="sidebar_content">
+          <h4 class="content_heading">Others</h4>
+          <ul class="sidebar_content_common">
+            <li class="sidebar_nav_content" routerLinkActive="active">
+              <a routerLink="forms-and-policy">
+                <span class="sidebar_icon">
+                  <img src="../../../../assets/img/file.svg" />
+                </span>
+                <p class="sidebar_title">Forms and Policies</p>
+                <!-- <span class="sidebar_arrow">
+                  <fa-icon [icon]="faChevronRight"></fa-icon>
+                </span> -->
+              </a>
+            </li>
+            <li class="sidebar_nav_content" routerLinkActive="active">
+              <a routerLink="reimbursement">
+                <span class="sidebar_icon">
+                  <img src="../../../../assets/img/file.svg" />
+                </span>
+                <p class="sidebar_title">Reimbursement</p>
+                <!-- <span class="sidebar_arrow">
+                  <fa-icon [icon]="faChevronRight"></fa-icon>
+                </span> -->
+              </a>
+            </li>
+
+            <!-- Forms and Policy Separated -->
+            <!-- <li expandMenu class="sidebar_nav_content">
+              <a>
+                <span class="sidebar_icon">
+                  <img src="../../../../assets/img/file.svg" />
+                </span>
+                <p class="sidebar_title">Forms and Policy</p>
+                <span class="sidebar_arrow">
+                  <fa-icon [icon]="faChevronRight"></fa-icon>
+                </span>
+              </a>
+            </li> -->
+            <!-- <ul class="nav submenu">
+              <li class="nav-item" routerLinkActive="active">
+                <a routerLink="/view-form">
+                  <span>View Form</span>
+                </a>
+              </li>
+              <li>
+                <a routerLink="/my-forms">
+                  <span>My Forms</span>
+                </a>
+              </li>
+              <li class="nav-item" routerLinkActive="active">
+                <a routerLink="/policy">
+                  <span>Policy</span>
+                </a>
+              </li> -->
+            <!-- </ul> -->
+            <!-- <li class="sidebar_nav_content" routerLinkActive="active">
+              <a routerLink="#">
+                <span class="sidebar_icon">
+                  <img src="../../../../assets/img/policy.svg" />
+                </span>
+                <p class="sidebar_title">Policy</p>
+              </a>
+            </li>
+             <li class="sidebar_nav_content" routerLinkActive="active">
+              <a routerLink="#">
+                <span class="sidebar_icon">
+                  <img src="../../../../assets/img/book.svg" />
+                </span>
+                <p class="sidebar_title">Knowledge Base</p>
+                <span class="sidebar_arrow">
+                  <fa-icon [icon]="faChevronRight"></fa-icon>
+                </span>
+              </a>
+            </li> -->
+            <li class="sidebar_nav_content" routerLinkActive="active">
+              <a routerLink="feedback">
+                <span class="sidebar_icon">
+                  <img src="../../../../assets/img/feedback.svg" />
+                </span>
+                <p class="sidebar_title">Feedback</p>
+              </a>
+            </li>
+            <!-- <li class="sidebar_nav_content" routerLinkActive="active">
+              <a routerLink="organization-structure">
+                <span class="sidebar_icon">
+                  <img src="../../../../assets/img/diagram.svg" />
+                </span>
+                <p class="sidebar_title">Organisation Structure</p>
+              </a>
+            </li> -->
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

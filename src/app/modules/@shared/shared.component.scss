@@ -1,0 +1,21 @@
+.main_container_wrapper {
+  display: flex;
+  min-height: 100vh;
+
+  .header_wrapper {
+    flex: 1;
+    background-color: #ebecf3;
+    width: calc(100% - 255px) !important;
+    .main_menu_wrapper {
+      padding: 0 30px 30px;
+      // margin: 0 auto;
+      // max-width: 1125px;
+    }
+  }
+}
+
+@media (max-width: 880px) {
+  .main_menu_wrapper {
+    padding: 0 15px 20px !important;
+  }
+}

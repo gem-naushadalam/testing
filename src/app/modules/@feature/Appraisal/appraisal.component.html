@@ -1,0 +1,8 @@
+<div *ngIf="user ; then userblock else hrblock">
+</div>
+<ng-template #userblock>
+<app-employee-appraisal></app-employee-appraisal>
+</ng-template>
+<ng-template #hrblock>
+  <app-manager-appraisal></app-manager-appraisal>
+</ng-template>

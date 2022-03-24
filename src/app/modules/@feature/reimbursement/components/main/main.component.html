@@ -1,0 +1,100 @@
+<div class="main">
+    <div class="top button" *ngIf="!invoiceUploadClicked">
+        <div class="button">
+            <button class="btn btn-primary" (click)="uploadInvoice()">UPLOAD INVOICE</button>
+        </div>
+    </div>
+    <div *ngIf="invoiceUploadClicked">
+        <div class="upload">
+            <span>UPLOAD INVOICES</span>
+        </div>
+        <form [formGroup] ="submitForm" (ngSubmit)="OnSubmitForm()">
+            <div class="forms">
+                <div class="form-type">
+                    <h3>INVOICE CATEGORY</h3>
+                    <mat-form-field class="filter">
+                        <mat-label>Select</mat-label>
+                        <mat-select formControlName = "category">
+                            <mat-option [value] = "'CERTIFICATION'">CERTIFICATION</mat-option>
+                            <mat-option [value] = "'VISAFEES'">VISAFEES</mat-option>
+
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <!-- <div class="form-type">
+                    <h3>INVOICE DATE</h3>
+                    <mat-form-field>
+                        <mat-label>MM/DD/YYYY</mat-label>
+                        <input matInput [matDatepicker]="picker2"  formControlName="invoiceDate"/>
+                        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                        <mat-datepicker #picker2></mat-datepicker>
+                    </mat-form-field>
+                </div> -->
+                <!-- <div class="form-type">
+                    <h3>INVOICE AMOUNT</h3>
+                    <input type="number" placeholder="Enter Amount" class="mat-form-field"  formControlName="invoiceAmount"/>
+                </div> -->
+                <div class="form-type">
+                    <h3>REIMBURSEMENT AMOUNT</h3>
+                    <input type="number" placeholder="Enter Amount" class="mat-form-field" formControlName="reimbursementAmount" />
+                </div>
+                <div class="upload-form">
+                    <h3>Upload File</h3>
+
+                    <div class="file-upload">
+
+                        <input type="file" class="file-input" name="file" placeholder="Attach File" accept=".pdf,.xls,.xlxs" (change)="onChange($event)" #fileUpload>
+                        <span>
+                            {{ fileName }}
+                          </span>
+                        <button mat-mini-fab color="primary" type="button" class="upload-btn"
+                            (click)="fileUpload.click()">
+                            BROWSE
+                        </button>
+
+                    </div>
+                    <!-- <span> Selected file format should be .xls, .xlsx or .pdf</span> -->
+                </div>
+
+
+            </div>
+            <div class="forms">
+             
+                <div class="form-type">
+                    <h3>COMMENTS</h3>
+                    <textarea class="textarea" cols="30" rows="30" placeholder="Comments" formControlName = "comments" ></textarea>
+                </div>
+            </div>
+
+            <div class="btn-wrapper">
+                <button class="btn btn-primary" type="submit">UPLOAD</button>
+                <button class="btn btn-primary closed" (click)="Close()">
+                    CLOSE
+                </button>
+            </div>
+        </form>
+    </div>
+    <div class="top bars">
+        <div class="btn-group-toggle button-top" data-toggle="buttons">
+            <label class="btn btn-primary btn-lg active" (click)="invoiceHistory()">
+                <input type="radio" name="options" id="option2" checked />
+                Invoice History
+            </label>
+
+            <label class="btn btn-primary btn-lg" (click)="reviewHistory()">
+                <input type="radio" name="options" id="option2" />
+                Review Request
+            </label>
+        </div>
+    </div>
+
+    <div [hidden]="!history" style="margin-bottom: 20px">
+        <app-history>
+        </app-history>
+    </div>
+    <div [hidden]="!review" style="margin-bottom: 20px">
+        <app-review>
+
+        </app-review>
+    </div>
+</div>

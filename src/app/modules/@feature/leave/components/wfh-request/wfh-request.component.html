@@ -1,0 +1,66 @@
+<div class="main_wrapper">
+  <form [formGroup]="submitWfh" (ngSubmit)=onPostWfh()>
+    <div class="inner">
+      <div class="left">
+        <div class="calendar">
+          <mat-calendar [ngClass]="{'active' : !selectedRangeValue.end}" #calendar 
+          [selected]="selectedRangeValue"
+            (selectedChange)="selectedChange($event)"
+             [dateClass]="dateClass()"
+             [minDate]="startDate"
+             [dateFilter]="filterDates"
+             >
+          </mat-calendar>
+          <span class="text-danger" *ngIf="!selectedRangeValue.end">End Date is required</span>
+        </div>
+        <div class="info">
+          <!-- <span class="Attention">Info: </span> -->
+          <span class="s" *ngIf="numofDates!=0">*You are taking {{numofDates}} WFH from {{ selectedRangeValue.start | date:
+            "yyyy-MM-dd" }} to
+            {{ selectedRangeValue.end | date: "yyyy-MM-dd" }}</span>
+        </div>
+      </div>
+      <div class="right">
+        <div class="mobile_wrapper">
+          <label> Secondary Mobile No.</label>
+          <input type="phone" placeholder="Mobile Number" formControlName="mobileNumber" />
+        </div>
+        <div class="button-reason">
+        <div class="reason_wrapper">
+          <span class="reason">REASON</span>
+          <div class="cal">
+          <textarea name="text" rows="4" class="reasons" formControlName="reason"></textarea>
+          </div>
+        </div>
+        <div class="button">
+          <button type="button" class="btn btn-primary reset btn-lg" (click)="reset()">RESET</button>
+          
+          <button type="submit" class="btn btn-success btn-lg"
+            [disabled]="!submitWfh.valid || !selectedRangeValue">
+            <span [matTooltip]="!submitWfh.valid ? 'Please select Date Range, Reason and Enter valid Mobile Number ' : ''" [matTooltipPosition]="'above'" [matTooltipClass]="'tooltip-pd'">APPLY</span></button>
+        </div>
+        </div>
+      </div>
+    </div>
+  </form>
+  <div class="btn-group-toggle button-top" data-toggle="buttons">
+    <label class="btn btn-primary btn-lg active" (click)="history()">
+      <input type="radio" name="options" id="option2" checked />
+      WFH History
+    </label>
+
+    <label class="btn btn-primary btn-lg" (click)="status()">
+      <input type="radio" name="options" id="option2" />
+      Review Request
+    </label>
+  </div>
+  <div [hidden]="!leave_history" style="margin-bottom: 20px;">
+    <app-table class="w-100" (action)="delete($event)" [tableData]='tableData' [displayedColumns]='displayedColumns'>
+    </app-table>
+
+  </div>
+  <div [hidden]="!review_status" style="margin-bottom: 20px;">
+    <app-review-table (approved)="approve($event)" (rejected)="reject($event)" (bulkApprove)="bulk($event)" class="
+      w-100" [displayedColumns]='reviewdisplayedColumns' [tableData]='reviewData'></app-review-table>
+  </div>
+</div>

@@ -1,0 +1,261 @@
+<app-breadcrumb></app-breadcrumb>
+<div class="main">
+    <div class="top-1">
+        <div class="button">
+          <button class="btn btn-primary" routerLink="add-new-industry">
+            Add New Industry
+          </button>
+        </div>
+      </div>
+    <form [formGroup]="addProject" (ngSubmit)="onSubmitMember()">
+        <div class="items">
+            <div class="top">
+                <div class="item">
+                    <div class="head">
+                        <span>PROJECT NAME</span>
+                    </div>
+                    <div class="input">
+                        <input class="name" type="text" placeholder="Project Name" formControlName="projectName">
+                    </div>
+                    <span
+                    class="text-danger"
+                    *ngIf="
+                      addProject.controls['projectName'].hasError('required') &&
+                      addProject.controls['projectName'].touched
+                    "
+                    >Project Name is required</span>
+                </div>
+                <div class="item" style="margin-left:20px">
+                    <div class="head">
+                        <span>INDUSTRY</span>
+                    </div>
+                    <mat-form-field class="input">
+                        <mat-label>Industry Name</mat-label>
+                        <mat-select disableOptionCentering panelClass="myPanelClass" formControlName="industryName">
+                            <mat-option *ngFor="let industry of industries" [value]="industry.industryTypeId">{{
+                                industry.industryType
+                                }}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <span
+                    class="text-danger"
+                    *ngIf="
+                      addProject.controls['industryName'].hasError('required') &&
+                      addProject.controls['industryName'].touched
+                    "
+                    ></span>
+                </div>
+                <div class="item" style="margin-left: 20px;">
+                    <div class="head">
+                        <span>Project Owner</span>
+                    </div>
+                    <div class="search-input input">
+                        <input type="text" placeholder="Owner Name" (focus)=show($event) (focusout) = hide($event) (keyup)="ownercall($event)"
+                            formControlName="ownerName">
+                        <div (mouseenter)="divShow()" (mouseleave)="divHide()">
+                            <div class="owner" *ngIf="ownerDiv">
+                                <div class="owner-inner" *ngFor="let data of emptyOwnerArray"
+                                    (click)="onOwnerSelection(data)">
+                                    <img width="30" height="30" src="{{ data.imagePath }}" style="
+          margin-right: 10px;
+          border-radius: 15px;
+        " />
+                                    <div>
+                                        <div>{{ data.employeeName }}</div>
+                                        <div>{{ data.email }}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <span
+                    class="text-danger"
+                    *ngIf="
+                      addProject.controls['ownerName'].hasError('required') &&
+                      addProject.controls['ownerName'].touched
+                    "
+                    >Owner Name is required</span>
+                </div>
+            </div>
+            <div class="item">
+                <div class="head">
+                    <span>Description</span>
+                </div>
+                <div class="input">
+                    <textarea cols="30" rows="30" class="textarea" type="text" formControlName="description"
+                        placeholder="Description"></textarea>
+                </div>
+                <span
+                class="text-danger"
+                *ngIf="
+                  addProject.controls['description'].hasError('required') &&
+                  addProject.controls['description'].touched
+                "
+                >Description is required</span>
+            </div>
+        </div>
+    <!-- </form> -->
+
+    <!-- <form [formGroup]="addMember" (ngSubmit)="onSubmitMember()"> -->
+        <div formArrayName="members">
+            <div class="items">
+                <div class="item">
+                    <div class="head">
+                        <span>Add member details</span>
+                        <button *ngIf="data.length == 0" class="add" type="button" (click)='onAddData()'>
+                            <img src="../../../../../../assets/img/add icon.png" width="18px" height="18px">
+                        </button>
+                    </div>
+                    <div class="sub-items" *ngFor="let divData of data; let i = index" [formGroupName]="i">
+                        <div class="top-items">
+                            <div class="sub-item name">
+                                <div class="head">
+                                    <span>NAME</span>
+                                </div>
+                                <div class="search-input input">
+                                    <input type="text" class="form-control" placeholder="Name" (keyup)="call($event, i)"
+                                        formControlName="name">
+                                    <div class="owner">
+                                        <div class="owner-inner" *ngFor="let data of emptyArray[i]"
+                                            (click)="onMemberSelection(data,i)">
+                                            <img width="30" height="30" src="{{ data.imagePath }}" style="
+                          margin-right: 10px;
+                          border-radius: 15px;
+                        " />
+                                            <div>
+                                                <div>{{ data.employeeName }}</div>
+                                                <div>{{ data.email }}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- <span
+                                class="text-danger"
+                                *ngIf="
+                                this.addProject.get('members')?.controls[i].get('name').hasError('required') &&
+                                addProject.controls['name'].touched
+                                "
+                                >Team Member Name is required</span> -->
+                            </div>
+
+                            <div class="sub-item role">
+                                <div class="head">
+                                    <span>TASK</span>
+                                </div>
+                                <mat-form-field class="role">
+                                    <mat-label>Task</mat-label>
+                                    <mat-select  disableOptionCentering panelClass="myPanelClass" placeholder="Tasks"
+                                        formControlName="task">
+                                        <mat-option *ngFor="let task of tasks" [value]="task.taskId">{{
+                                            task.taskName
+                                            }}</mat-option>
+                                    </mat-select>
+                        
+                                </mat-form-field>
+                                <!-- <span
+                                class="text-danger"
+                                *ngIf="
+                                addMember.controls['task'].hasError('required') &&
+                                addMember.controls['task'].touched
+                                "
+                                ></span> -->
+                            </div>
+                            <div class="sub-item role">
+                                <div class="head">
+                                    <span>Role</span>
+                                </div>
+                                <mat-form-field class="role ">
+                                    <mat-label>Role</mat-label>
+                                    <mat-select  disableOptionCentering panelClass="myPanelClass" placeholder="Role"
+                                        formControlName="role">
+                                        <mat-option *ngFor="let role of roles" [value]="role.roleTypeId">{{
+                                            role.roleTypeName
+                                            }}</mat-option>
+                                    </mat-select>
+
+                                </mat-form-field>
+                                <!-- <span
+                                class="text-danger"
+                                *ngIf="
+                                addMember.controls['role'].hasError('required') &&
+                                addMember.controls['role'].touched
+                                "
+                                ></span> -->
+                            </div>
+
+                            <button class="delete" (click)="data.splice(i, 1);remove(i)">
+                                <img src="../../../../../../assets/img/close.png" width="18px" height="18px">
+                            </button>
+                        </div>
+                        <div class="bottom-items">
+
+                            <div class="sub-item">
+                                <div class="head">
+                                    <span>Allocated From</span>
+                                </div>
+                                <mat-form-field>
+                                    <mat-label>dd/mm/yyyy</mat-label>
+                                    <input matInput class="disable" [matDatepicker]="picker1" formControlName="startDate">
+                                    <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                                    <mat-datepicker #picker1></mat-datepicker>
+                                </mat-form-field>
+                                <!-- <span
+                                class="text-danger"
+                                *ngIf="
+                                addMember.controls['startDate'].hasError('required') &&
+                                addMember.controls['startDate'].touched
+                                "
+                                ></span> -->
+                            </div>
+                            <div class="sub-item">
+                                <div class="head">
+                                    <span>Allocated Till</span>
+                                </div>
+                                <mat-form-field>
+                                    <mat-label>dd/mm/yyyy</mat-label>
+                                    <input matInput class="disable" [matDatepicker]="picker2" formControlName="endDate">
+                                    <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                                    <mat-datepicker #picker2></mat-datepicker>
+                                </mat-form-field>
+                                <!-- <span
+                                class="text-danger"
+                                *ngIf="
+                                addMember.controls['endDate'].hasError('required') &&
+                                addMember.controls['endDate'].touched
+                                "
+                                ></span> -->
+                            </div>
+                            <div class="sub-item">
+                                <div class="head">
+                                    <span>Bandwidth</span>
+                                </div>
+                                <div class="input">
+                                    <input class="role" type="text" placeholder="Bandwidth" formControlName="bandwidth">
+                                </div>
+                            </div>
+                            <div class="sub-item">
+                                <div class="head">
+                                    <span>Shadow</span>
+                                </div>
+                                <input type="checkbox" formControlName="shadow">
+                                
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- </form> -->
+            <button *ngIf="data.length != 0" class="add" type="button" (click)='onAddData()'  
+             >
+                <img src="../../../../../../assets/img/add icon.png" width="18px" height="18px">
+                Add more
+            </button>
+            <div class="button-wrapper">
+                <button class="save_btn btn btn-success" type="submit" [disabled]="!addProject.valid">CREATE</button>
+            </div>
+        <!-- </div> -->
+    </form>
+</div>

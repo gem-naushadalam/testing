@@ -1,0 +1,197 @@
+<div class="main-wrapper">
+  <div class="inner">
+    <div class="top">
+      <div class="top-heading">
+        <h3>Appraisal {{ formData !== null ? formData.year : "No Data" }}</h3>
+        <button class="export">
+          <img src="../../../../../../../assets/svg/setting.svg" />
+        </button>
+      </div>
+      <p>Settings</p>
+    </div>
+
+    <!-- <div class="top" *ngFor="let appraisal of appraisalCycleData">
+      <div class="top-heading" *ngIf="!appraisal.active">
+        <h3>Appraisal {{appraisal.year}}</h3>
+        <button class="export">
+          <img src="../../../../../../../assets/svg/setting.svg" />
+        </button>
+      </div>
+      <p>Settings</p>
+    </div> -->
+    <div class="bottom">
+      <form [formGroup]="appraisalSettingsForm" (ngSubmit)="onFormSubmit()">
+        <div class="gray">
+          <div class="form">
+            <div class="inner-form">
+              <div class="form-top">
+                <!-- <div class="department">
+                  <label>Department</label>
+                  <select class="department-value" formControlName="department">
+                    <option disabled selected value="">Department</option>
+                    <option value="accounts">Accounts</option>
+                    <option value="admin">Administration</option>
+                  </select>
+                </div> -->
+                <div class="team">
+                  <label>Team</label>
+                  <mat-form-field class="full-width">
+                    <mat-select
+                      placeholder="Teams"
+                      formControlName="team"
+                      multiple
+                    >
+                      <app-select-check-all
+                        [model]="$any(appraisalSettingsForm).get('team')"
+                        [values]="teams"
+                      >
+                      </app-select-check-all>
+
+                      <mat-select-filter
+                        *ngIf="teams.length"
+                        [displayMember]="'teamName'"
+                        [array]="teams"
+                        (filteredReturn)="filteredList1 = $event"
+                      ></mat-select-filter>
+                      <mat-option
+                        *ngFor="let team of filteredList1"
+                        [value]="team.teamId"
+                        >{{ team.teamName }}</mat-option
+                      >
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+                <!-- <div class="designation">
+                  <label>Designation</label>
+                  <select
+                    class="designation-value"
+                    formControlName="designation"
+                  >
+                    <option disabled selected value="">Designation</option>
+                    <option value="get">GET</option>
+                    <option value="consultant">Consultant</option>
+                  </select>
+                </div> -->
+                <div class="appraisal-cycle">
+                  <label>Appraisal Cycle</label>
+                  <!-- <select class="cycle-value" formControlName="cycle">
+                    <option disabled selected value="">Appraisal Cycle</option>
+                    <option value="2020">April 2020</option>
+                    <option value="2021">April 2021</option>
+                  </select> -->
+
+                  <mat-form-field class="full-width">
+                    <mat-select placeholder="Cycle" formControlName="cycle">
+                      <mat-option
+                        *ngFor="let appraisal of appraisalCycleData"
+                        [value]="appraisal"
+                        >{{ appraisal.appraisalCycleName }}</mat-option
+                      >
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+                <div class="start-date">
+                  <h3>Start Date</h3>
+                  <mat-form-field>
+                    <mat-label>mm/dd/yyyy</mat-label>
+                    <input
+                      matInput
+                      [matDatepicker]="picker1"
+                      formControlName="startDate"
+                    />
+                    <mat-datepicker-toggle
+                      matSuffix
+                      [for]="picker1"
+                    ></mat-datepicker-toggle>
+                    <mat-datepicker #picker1></mat-datepicker>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="form-mid">
+                <!-- Start Date Calendar -->
+
+                <!-- End Date Calendar -->
+                <div class="end-date">
+                  <h3>End Date</h3>
+                  <mat-form-field>
+                    <mat-label>mm/dd/yyyy</mat-label>
+                    <input
+                      matInput
+                      [matDatepicker]="picker2"
+                      formControlName="endDate"
+                    />
+                    <mat-datepicker-toggle
+                      matSuffix
+                      [for]="picker2"
+                    ></mat-datepicker-toggle>
+                    <mat-datepicker #picker2></mat-datepicker>
+                  </mat-form-field>
+                </div>
+                <!-- Self Appraisal Calendar -->
+                <div class="self-appraisal">
+                  <h3>Self Appraisal</h3>
+                  <mat-form-field>
+                    <mat-label>mm/dd/yyyy</mat-label>
+                    <input
+                      matInput
+                      [matDatepicker]="picker3"
+                      formControlName="selfAppraisalDate"
+                    />
+                    <mat-datepicker-toggle
+                      matSuffix
+                      [for]="picker3"
+                    ></mat-datepicker-toggle>
+                    <mat-datepicker #picker3></mat-datepicker>
+                  </mat-form-field>
+                </div>
+                <div class="appraisal-review">
+                  <h3>Appraiser Review</h3>
+                  <mat-form-field>
+                    <mat-label>mm/dd/yyyy</mat-label>
+                    <input
+                      matInput
+                      [matDatepicker]="picker4"
+                      formControlName="appraisarReviewDate"
+                    />
+                    <mat-datepicker-toggle
+                      matSuffix
+                      [for]="picker4"
+                    ></mat-datepicker-toggle>
+                    <mat-datepicker #picker4></mat-datepicker>
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <!-- Form bottom -->
+              <div class="form-bottom">
+                <div class="aprroval">
+                  <h3>Approval</h3>
+                  <mat-form-field>
+                    <mat-label>mm/dd/yyyy</mat-label>
+                    <input
+                      matInput
+                      [matDatepicker]="picker5"
+                      formControlName="approvalDate"
+                    />
+                    <mat-datepicker-toggle
+                      matSuffix
+                      [for]="picker5"
+                    ></mat-datepicker-toggle>
+                    <mat-datepicker #picker5></mat-datepicker>
+                  </mat-form-field>
+                </div>
+
+                <div class="save-close-btn">
+                  <button class="save-btn" type="submit">Save</button>
+                  <button class="close-btn" (click)="resetIdx()" type="button">
+                    Close
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

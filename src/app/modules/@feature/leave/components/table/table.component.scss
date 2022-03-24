@@ -1,0 +1,176 @@
+.main-wrapper {
+  h2 {
+    max-width: 1100px;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    font-weight: 500 !important;
+    font-family: "Montserrat" !important;
+    font-size: x-large !important;
+    margin: 16px 4px 16px;
+  }
+}
+th,
+tr {
+  height: 30%;
+  border-color: #f7f7f7;
+  text-align: left;
+}
+
+.mat-cell {
+  padding-left: 40px;
+  color: #4e4e4e !important;
+  border-color: #f7f7f7;
+}
+.mat-header-cell {
+  font-family: "Montserrat", sans-serif !important;
+  font-weight: bolder;
+  color: #727373;
+  padding: 15px;
+  padding-left: 40px;
+  vertical-align: middle;
+  text-align: left;
+  font-size: large;
+}
+th.mat-header-cell:last-of-type {
+  padding-left: 40px;
+}
+.approve {
+  font-size: 11px;
+  color: darkgrey;
+}
+
+// Sorting Arrow
+.mat-sort-header-arrow[style] {
+  // Hide default arrow stem
+  .mat-sort-header-stem {
+    display: none;
+  }
+  .mat-sort-header-indicator {
+    opacity: 1;
+    color: black;
+    font-weight: bold;
+
+    // Hide default arrow as its composed of left, right and middle
+    .mat-sort-header-pointer-left,
+    .mat-sort-header-pointer-right,
+    .mat-sort-header-pointer-middle {
+      display: none;
+    }
+  }
+}
+
+// My custom ascending arrow
+[aria-sort="ascending"] {
+  ::ng-deep .mat-sort-header-arrow {
+    .mat-sort-header-indicator {
+      &::before {
+        content: " <i class=" fa fa-sort ">...</i>";
+        top: -1.6em;
+        position: absolute;
+      }
+    }
+  }
+}
+
+// My custom descending arrow
+[aria-sort="descending"] {
+  ::ng-deep .mat-sort-header-arrow {
+    .mat-sort-header-indicator {
+      &::before {
+        content: "<i class=" fa fa-sort ">...</i>";
+        top: -2.4em;
+        position: absolute;
+      }
+    }
+  }
+}
+
+.table-responsive {
+  display: block;
+  width: 100%;
+  max-height: 500px;
+  overflow: auto;
+
+  .mat-table {
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 1rem;
+    display: table;
+    border-collapse: collapse;
+    margin: 0px;
+    height: 100%;
+  }
+  .mat-row,
+  .mat-header-row {
+    display: table-row;
+  }
+  .mat-cell,
+  .mat-header-cell {
+    word-wrap: initial;
+    display: table-cell;
+    padding: 8px 10px 0px 30px;
+    line-break: unset;
+    width: auto;
+    white-space: nowrap;
+    overflow: hidden;
+    vertical-align: middle;
+    line-height: 45px;
+    font-size: smaller;
+  }
+  .mat-cell {
+    font-family: "Lato", sans-serif;
+    line-height: 30px;
+    vertical-align: text-top;
+  }
+  .mat-cell.mat-column-reason {
+    white-space: inherit !important;
+  }
+  .mat-header-cell:first-of-type,
+  .mat-cell:first-of-type,
+  .mat-footer-cell:first-of-type {
+    padding-left: 20px;
+  }
+
+  .mat-cell.mat-column-remark {
+    .remark {
+      line-height: 1.8;
+    }
+  }
+  .mat-cell.mat-column-action {
+    button {
+      border: none;
+      background: white;
+    }
+  }
+  .mat-cell.mat-column-action {
+    vertical-align: -webkit-baseline-middle;
+  }
+}
+.applied {
+  color: blue !important;
+  font-weight: bold;
+}
+.approved {
+  color: #56bb4a !important;
+  font-weight: bold;
+}
+.rejected {
+  color: red !important;
+  font-weight: bold;
+}
+.action {
+  button {
+    // margin-left: 10px;
+    border: none;
+    background: transparent;
+    font-size: 20px;
+
+    .update {
+      color: #56bb4a;
+    }
+
+    .cancel {
+      color: red;
+    }
+  }
+}

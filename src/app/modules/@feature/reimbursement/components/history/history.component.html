@@ -1,0 +1,104 @@
+<div class="table-responsive">
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8 table">
+    <!-- S.No Column  -->
+    <ng-container matColumnDef="position">
+      <th mat-header-cell *matHeaderCellDef>S.NO</th>
+      <td mat-cell *matCellDef="let element; let i = index">
+        {{ i + 1 }}
+      </td>
+    </ng-container>
+
+    <!-- Form-Type Column -->
+    <ng-container matColumnDef="category">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>CATEGORY</th>
+      <td mat-cell *matCellDef="let element">
+        {{element.category}}
+      </td>
+    </ng-container>
+
+    <!-- Uploaded-ON Column -->
+    <ng-container matColumnDef="date">
+      <th mat-header-cell *matHeaderCellDef>DATE</th>
+      <td class="table-reason" mat-cell *matCellDef="let element">
+        {{element.date | date:"YYYY-MM-dd"}}
+        <br />
+        <!-- <span class = "time">01:05 PM</span> -->
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="amount">
+        <th mat-header-cell *matHeaderCellDef>INVOICE AMOUNT</th>
+        <td class="table-reason" mat-cell *matCellDef="let element">
+            {{element.invoiceAmount}}
+          <br />
+          <!-- <span class = "time">01:05 PM</span> -->
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="reimbursement">
+        <th mat-header-cell *matHeaderCellDef>REIMBURSEMENT AMOUNT</th>
+        <td class="table-reason" mat-cell *matCellDef="let element">
+          {{element.amountReimbursed}}
+          <br />
+          <!-- <span class = "time">01:05 PM</span> -->
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="comments">
+        <th mat-header-cell *matHeaderCellDef>COMMENTS</th>
+        <td class="table-reason" mat-cell *matCellDef="let element">
+         {{element.description}}
+          <br />
+          <!-- <span class = "time">01:05 PM</span> -->
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef>STATUS</th>
+        <td class="table-reason" mat-cell *matCellDef="let emp">
+          <span      [ngClass]="{
+            applied: emp.status  === 'APPLIED',
+            approved: emp.status  === 'APPROVED',
+            rejected: emp.status  === 'REJECTED'
+          }">
+          {{emp.status}}
+          </span>
+          <br />
+          <!-- <span class = "time">01:05 PM</span> -->
+        </td>
+      </ng-container>
+
+    <!-- Action Column -->
+    <ng-container matColumnDef="actions">
+      <th style="width: 15%" mat-header-cell *matHeaderCellDef>VIEW</th>
+      <td mat-cell *matCellDef="let element">
+        <ng-template #content let-modal>
+          <div class="modal-header">
+            <h4 class="modal-title" id="modal-basic-title">
+              {{ element.formName | uppercase }}
+            </h4>
+            <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <pdf-viewer src="{{ url }}" [rotation]="0" [show-all]="false" [autoresize]="true" [original-size]="true"
+              [fit-to-page]="true" [render-text]="false" style="display: block"></pdf-viewer>
+          </div>
+        </ng-template>
+        <button class="view" (click)="viewFile(element.id); open(content)">
+          <svg width="20" height="14" viewBox="0 0 20 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" clip-rule="evenodd"
+              d="M10 3.11176C9.63201 3.11751 9.26672 3.17598 8.9153 3.28537C9.07785 3.57125 9.1644 3.89402 9.16669 4.22287C9.16669 5.29676 8.29613 6.16732 7.22224 6.16732C6.89339 6.16504 6.57062 6.07849 6.28474 5.91593C5.82219 7.52012 6.43804 9.24031 7.81362 10.1864C9.1892 11.1326 11.0159 11.0923 12.3484 10.0865C13.681 9.08074 14.2205 7.33509 13.6878 5.75283C13.155 4.17057 11.6696 3.10672 10 3.11176ZM19.8791 6.49371C17.9962 2.81975 14.2684 0.333984 9.99998 0.333984C5.73158 0.333984 2.00276 2.82148 0.120814 6.49405C-0.0402714 6.8127 -0.0402714 7.18895 0.120814 7.5076C2.0038 11.1816 5.73158 13.6673 9.99998 13.6673C14.2684 13.6673 17.9972 11.1798 19.8791 7.50725C20.0402 7.1886 20.0402 6.81235 19.8791 6.49371ZM9.99995 12.0007C6.5746 12.0007 3.43432 10.0909 1.73849 7.00065C3.43432 3.91037 6.57425 2.00065 9.99995 2.00065C13.4256 2.00065 16.5656 3.91037 18.2614 7.00065C16.5659 10.0909 13.4256 12.0007 9.99995 12.0007Z"
+              fill="#9B2F9B" />
+          </svg>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    <tr class="mat-row" *matNoDataRow>
+      <td class="mat-cell" colspan="8">No data Available</td>
+    </tr>
+  </table>
+  </div>

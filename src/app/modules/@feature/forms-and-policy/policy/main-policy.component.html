@@ -1,0 +1,7 @@
+<div *ngIf="user; then userblock; else hrblock"></div>
+<ng-template #userblock>
+  <app-policy></app-policy>
+</ng-template>
+<ng-template #hrblock>
+  <app-hr-policy></app-hr-policy>
+</ng-template>

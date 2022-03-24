@@ -1,0 +1,209 @@
+<div>
+  <form [formGroup]="submitLeave" (ngSubmit)="onPostLeave()">
+    <div class="main">
+      <div class="inner">
+        <div class="left">
+          <div class="calendar">
+            <mat-calendar
+              [ngClass]="{ active: !selectedRangeValue.end }"
+              [selected]="selectedRangeValue"
+              [minDate]="startDate"
+              (selectedChange)="selectedChange($event)"
+              [dateClass]="dateClass()"
+              [dateFilter]="filterDates"
+            >
+            </mat-calendar>
+            <span class="text-danger" *ngIf="!selectedRangeValue.end"
+              >End Date is required</span
+            >
+          </div>
+
+          <div class="info">
+            <span class="s"
+              >*You are taking {{ selectedVal }} from
+              <tr></tr>
+              {{ selectedRangeValue.start | date: "yyyy-MM-dd" }} to
+              {{ selectedRangeValue.end | date: "yyyy-MM-dd" }}</span
+            >
+          </div>
+        </div>
+
+        <div class="right">
+          <div class="right-first">
+            <div class="availability_wrapper">
+              <span class="avail">AVAILABILITY ON</span>
+            </div>
+            <div class="input-wrapper">
+              <input
+                type="checkbox"
+                id="option1"
+                formControlName="mobile"
+                (change)="changedMobile($event)"
+              />
+              <label for="option1">Mobile</label>
+              <input
+                type="checkbox"
+                id="option2"
+                formControlName="email"
+                (change)="changedEmail($event)"
+              />
+              <label for="option2">Email</label>
+            </div>
+          </div>
+          <div class="half-day">
+            <span class="avail">HALF DAY</span>
+            <div *ngIf="!daterange" class="radio-btns">
+              <input
+                type="checkbox"
+                (change)="isCheckedOneDay($event)"
+                id="first"
+                formControlName="isCheckedd"
+                value="First-Half"
+              />
+              <label for="first">Leave for half day</label><br />
+            </div>
+            <div *ngIf="half" class="radio-btns">
+              <input
+                type="radio"
+                id="first"
+                value="First-Half"
+                formControlName="Half"
+              />
+              <label for="first">First-Half</label><br />
+              <input
+                type="radio"
+                id="second"
+                value="Second-Half"
+                formControlName="Half"
+              />
+              <label for="second">Second-Half</label><br />
+            </div>
+            <div *ngIf="daterange" class="radio-btns">
+              <input
+                type="checkbox"
+                (change)="isChecked($event)"
+                id="first"
+                formControlName="firstdayhalfday"
+              />
+              <label for="first"
+                >First day of leave period is a half day leave</label
+              ><br />
+              <input
+                type="checkbox"
+                (change)="isChecked($event)"
+                id="second"
+                formControlName="lastdayhalfday"
+              />
+              <label for="second"
+                >Last day of leave period is a half day leave</label
+              ><br />
+            </div>
+          </div>
+          <div class="leave_type_wrapper">
+            <span class="leave">LEAVE TYPE</span>
+            <div
+            class="leave-inner custom select"
+              [ngClass]="{
+                'invalid-input':
+                  submitLeave.controls['selected'].hasError('required') &&
+                  submitLeave.controls['selected'].touched
+              }"
+            >
+              <mat-select disableOptionCentering panelClass="myPanelClass" formControlName = "selected" class="form-select" aria-label="Default select example">
+                <mat-option
+                  *ngFor="let item of combination; let i = index"
+                  (click)="onValChange(item)"
+                  value="{{ item }}"
+                >
+                  {{ item }}
+                </mat-option>
+              </mat-select> 
+            </div>
+            <span
+              class="text-danger"
+              *ngIf="
+                submitLeave.controls['selected'].hasError('required') &&
+                submitLeave.controls['selected'].touched
+              "
+              >Make a Selection</span
+            >
+          </div>
+        <div class="button-reason">
+          <div class="reason_wrapper">
+            <span class="reason">REASON</span>
+            <div class="cal">
+              <textarea formControlName="reason" rows="4" class="reasons"></textarea>
+
+              <span
+                class="text-danger"
+                *ngIf="
+                  submitLeave.controls['reason'].hasError('required') &&
+                  submitLeave.controls['reason'].touched
+                "
+                >Reason is required</span
+              >
+            </div>
+
+          </div>
+          <div class="button">
+            <button
+              type="button"
+              class="btn btn-primary reset btn-lg"
+              (click)="reset()"
+            >
+              Reset
+            </button>
+
+            <button
+              type="sumbit"
+              class="btn btn-success btn-lg"
+              [disabled]="!submitLeave.valid || !selectedRangeValue"
+            >
+              <span
+                [matTooltip]="
+                  !submitLeave.valid
+                    ? 'Please select Date Range, Leave Type and Reason '
+                    : ''
+                "
+                [matTooltipPosition]="'above'"
+                [matTooltipClass]="'tooltip-pd'"
+                >APPLY</span
+              >
+            </button>
+          </div>
+         </div>
+        </div>
+      </div>
+    </div>
+  </form>
+  <div class="btn-group-toggle button-top" data-toggle="buttons">
+    <label class="btn btn-primary btn-lg active" (click)="history()">
+      <input type="radio" name="options" id="option2" checked />
+      Leave History
+    </label>
+
+    <label class="btn btn-primary btn-lg" (click)="status()">
+      <input type="radio" name="options" id="option2" />
+      Review Request
+    </label>
+  </div>
+  <div [hidden]="!leave_history" style="margin-bottom: 20px">
+    <app-table
+      (action)="delete($event)"
+      class="w-100"
+      [tableData]="tableData"
+      [displayedColumns]="displayedColumns"
+    >
+    </app-table>
+  </div>
+  <div [hidden]="!review_status" style="margin-bottom: 20px">
+    <app-review-table
+      (approved)="approve($event)"
+      (rejected)="reject($event)"
+      (bulkApprove)="bulk($event)"
+      class="w-100"
+      [displayedColumns]="reviewdisplayedColumns"
+      [tableData]="reviewData"
+    ></app-review-table>
+  </div>
+</div>

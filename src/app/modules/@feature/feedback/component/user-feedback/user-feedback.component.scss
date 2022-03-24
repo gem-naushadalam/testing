@@ -1,0 +1,93 @@
+* {
+  font-family: "Montserrat", sans-serif !important;
+}
+
+.main {
+  .inner {
+    .top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 30px 0px;
+      h3 {
+        font-size: 20px;
+        color: #393939;
+
+        font-weight: 700;
+        margin-bottom: 0;
+        text-transform: uppercase;
+      }
+    }
+  }
+}
+
+.subject-wrapper {
+  label {
+    display: block;
+    text-transform: uppercase;
+    color: #727373;
+    font-size: small;
+    font-family: sans-serif;
+    font-weight: bolder;
+  }
+  input {
+    width: 100%;
+    // max-width: 300px;
+    padding: 10px 12px;
+    background: #ffffff;
+    box-shadow: 0px 7px 64px rgb(0 0 0 / 7%);
+    border-radius: 6px;
+    border: 0;
+  }
+
+  input::-webkit-input-placeholder {
+    font-size: 12px;
+    // line-height: 3;
+  }
+}
+
+.comment-wrapper {
+  padding-top: 25px;
+  label {
+    display: block;
+    text-transform: uppercase;
+    color: #727373;
+    font-size: small;
+    font-family: sans-serif;
+    font-weight: bolder;
+  }
+  textarea {
+    background-color: white;
+    border-radius: 10px;
+    height: 75px;
+    border-color: white;
+    // width: 500px;
+    margin-top: 5px;
+    // margin-bottom: 20px;
+    width: 100%;
+    padding: 12px;
+  }
+  textarea::placeholder {
+    font-size: 12px;
+  }
+}
+
+.submit-btn-wrapper {
+  margin-top: 25px;
+  button {
+    background-color: #00c48c;
+    border-color: #00c48c;
+    padding: 6px 46px;
+    font-size: 16px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+  }
+}
+
+input.ng-touched.ng-invalid {
+  border: 1px solid red;
+}
+
+textarea.ng-touched.ng-invalid {
+  border: 1px solid red;
+}

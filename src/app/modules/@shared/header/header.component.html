@@ -1,0 +1,91 @@
+<div class="main_header" [ngClass]="{ 'header-slim': isHeaderSlim() }">
+  <div class="container" *ngIf="!isMobile">
+    <div class="row">
+      <div class="header_inner">
+        <div class="header_left">
+          <app-sidebar-toggle (toggle)="toggleBtn()"></app-sidebar-toggle>
+          <span class="head">{{Head}}</span>
+
+        </div>
+        <div class="header_right">
+          <!-- <div class="header_appBtn_wrapper">
+            <button class="appBtn">
+              <span class="appBtn_icon">
+                <img
+                  width="25px"
+                  height="25px"
+                  src="../../../../assets/img/nav-icon.svg"
+                />
+              </span>
+            </button>
+          </div> -->
+          <!-- <div class="noti_wrapper"> -->
+            <!-- <button class="noti_icon">
+              <fa-icon [icon]="faBell"></fa-icon>
+              <span class="noti_number">10</span>
+            </button> -->
+          <!-- </div> -->
+          <div class="username_wrapper">
+            <p class="username">{{name}}</p>
+            <span class="user_arrow">
+              <fa-icon [icon]="faChevronDown"  [matMenuTriggerFor]="menu"  ></fa-icon>
+              <mat-menu #menu="matMenu">
+                <button mat-menu-item (click)="openLogout()">Log Out</button>
+              
+                <!-- <button mat-menu-item>Item 2</button> -->
+              </mat-menu>
+            </span>
+            <!-- <ng-template #logoutDialog>
+              <p class="logout">Do you want to logout?</p>
+              <div class="btn-optn d-flex">
+                <button disableRipple mat-raised-button class="btn" (click)="signOut()">Yes</button>
+                <span></span>
+                <button mat-raised-button class="btn" matDialogClose>No</button>
+              </div>
+            </ng-template> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+ <div class="mobile_1" *ngIf = "isMobile">
+  <div>
+    <div class="header_inner">
+      <div class="header_left">
+        <app-sidebar-toggle (toggle)="toggleBtn()"></app-sidebar-toggle>
+        <div class="head">
+          <span class="appraisal_spn">{{Head}}</span>
+        </div>
+        <div class="header_right">
+          <div class="header_appBtn_wrapper">
+            <button class="appBtn">
+              <span class="appBtn_icon">
+                <img
+                  width="25px"
+                  height="25px"
+                  src="../../../../assets/img/nav-icon.svg"
+                />
+              </span>
+            </button>
+          </div>
+          <div class="noti_wrapper">
+            <button class="noti_icon">
+              <fa-icon [icon]="faBell"></fa-icon>
+              <span class="noti_number">10</span>
+            </button>
+          </div>
+          <div class="username_wrapper">
+            <p class="username">{{name}}</p>
+            <span class="user_arrow">
+              <fa-icon [icon]="faChevronDown" [matMenuTriggerFor]="menu" ></fa-icon>
+              <mat-menu #menu="matMenu">
+                <button mat-menu-item>Item 1</button>
+                <button mat-menu-item>Item 2</button>
+              </mat-menu>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

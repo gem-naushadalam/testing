@@ -1,0 +1,36 @@
+<div *ngIf = "open">
+
+<form [formGroup] = "addParameter" (ngSubmit) = onPostParameter()>
+    <div class="main">
+        <div class="items">
+              <div class="item">
+                <select class="competency" formControlName = "competency">
+                  <option disabled selected value = "">Competency</option>
+                  <option value="BEHAVIOURAL">Behavioural</option>
+                  <option value="TECHNICAL">Technical</option>        
+                </select>
+              </div>
+              <div class="item">
+                <input  class="name" type="text" formControlName="parameter" placeholder="Parameter Name">
+                
+              </div>
+              <div class="item">
+                <select class="competency" formControlName = "weightage">
+                  <option disabled selected value = "">Weightage</option>
+                  <option value="5">5</option>
+                  <option value="4">4</option>   
+                  <option value="3">3</option>        
+                  <option value="2">2</option>        
+                  <option value="1">1</option>        
+                   
+                </select>
+              </div>
+        </div>
+        <div class="button-wrapper">
+            <button class="save_btn" type="submit">SAVE</button>
+            <button class="close_btn" type="button" (click) ="close()" >CLOSE</button>
+        </div>
+    </div>
+</form>
+</div>
+

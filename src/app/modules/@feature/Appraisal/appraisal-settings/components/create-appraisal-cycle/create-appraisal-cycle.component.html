@@ -1,0 +1,71 @@
+<div *ngIf="open">
+  <form [formGroup]="createCycle" (ngSubmit)="onPostCycle()">
+    <div class="main">
+      <div class="items">
+        <div class="item">
+          <select class="country" formControlName="country">
+            <option disabled selected value="">Country</option>
+            <option value="India">India</option>
+            <option value="USA">USA</option>
+          </select>
+          <div
+            class="text-danger"
+            *ngIf="
+              createCycle.controls['country'].hasError('required') &&
+              createCycle.controls['country'].touched
+            "
+          >
+            Country is required
+          </div>
+        </div>
+        <div class="item">
+          <select class="year" formControlName="year">
+            <option disabled selected value="">Appraisal Year</option>
+            <option value="2022">2022</option>
+            <option value="2021">2021</option>
+          </select>
+          <div
+            class="text-danger"
+            *ngIf="
+              createCycle.controls['year'].hasError('required') &&
+              createCycle.controls['year'].touched
+            "
+          >
+            Year is required
+          </div>
+        </div>
+        <div class="item">
+          <select class="month" formControlName="month">
+            <label>Appraisal Month</label>
+            <option disabled selected value="">Appraisal Month</option>
+            <option value="1">January</option>
+            <option value="2">February</option>
+            <option value="3">March</option>
+            <option value="4">April</option>
+            <option value="5">May</option>
+            <option value="6">June</option>
+            <option value="7">July</option>
+            <option value="8">August</option>
+            <option value="9">September</option>
+            <option value="10">October</option>
+            <option value="11">November</option>
+            <option value="12">December</option>
+          </select>
+          <div
+            class="text-danger"
+            *ngIf="
+              createCycle.controls['month'].hasError('required') &&
+              createCycle.controls['month'].touched
+            "
+          >
+            Month is required
+          </div>
+        </div>
+      </div>
+      <div class="button-wrapper">
+        <button class="save_btn" type="submit">SAVE</button>
+        <button class="close_btn" type="button" (click)="close()">CLOSE</button>
+      </div>
+    </div>
+  </form>
+</div>

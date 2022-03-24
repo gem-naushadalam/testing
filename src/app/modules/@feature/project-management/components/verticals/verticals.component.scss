@@ -1,0 +1,148 @@
+.main-wrapper {
+  .top1 {
+    display: flex;
+    justify-content: space-between;
+}
+
+    .top {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 10px;
+      .text {
+        font-family: 'Montserrat',sans-serif;
+        font-style: normal;
+        font-weight: 600;
+        font-size: large;
+        margin-top: 5px;
+      }
+      .button{
+          .btn-primary{
+              background: #8A49C6 !important;
+              border: #8A49C6 ;
+              border-radius: 6px;
+              font-family: 'Montserrat',sans-serif;
+        text-transform: uppercase;
+        font-size: small;
+  
+          }
+      }
+    }
+    .cards{
+        padding-top: 20px;
+        .name{
+          display: flex;
+          justify-content: space-between;
+          font-family: 'Montserrat';
+          font-weight: bold;
+          button{
+              border: none !important;
+              background: none !important;
+          }
+        }
+        .count{
+          font-family: 'Montserrat';
+          margin-left: 5px;
+        }
+        .position{
+            .text{
+                color: #6B6B6B;
+                font-family: 'Lato',sans-serif;
+                font-size: 12px;
+            }
+            .date{
+                font-family: 'Lato',sans-serif;
+                font-size: 12px;
+                color: black;
+                margin-left: 20px;
+            }
+        }
+        .middle {
+          .description-wrap {
+            .description-inner {
+              display: flex;
+              align-items: baseline;
+              margin-bottom: 10px;
+              margin-top: 15px;
+              .description-label {
+                margin: 0;
+                color: black;
+                font-weight: 500;
+                font-family: 'Lato',sans-serif;
+
+              }
+              .edit-description {
+                background: none;
+                border: none;
+                margin-left: 10px;
+                font-size: 20px;
+              }
+            }
+            .description {
+              background-color: #f2f2f2;
+              padding: 15px 12px;
+              border-radius: 10px;
+              font-size: 13px;
+              font-family: 'Lato',sans-serif;
+
+            }
+          }
+        }
+        .owners{
+          margin-top: 10px;
+            .text{
+              font-family: 'Montserrat';
+              font-weight: bold;
+              font-size: 12px;
+            
+  
+            }
+        }
+        button.mat-menu-item {
+          width: 100%;
+          height: 36px;
+          border: 1px solid gray;
+          font-family: 'Lato',sans-serif;
+        }
+    
+      
+    }
+  }
+  ::ng-deep .mat-menu-content.mat-focus-indicator.mat-menu-item {
+      font-family: 'Lato';
+      height: 33px;
+      border: 0.5px solid gray;
+      display: flex;
+      line-height: 28px;
+    }
+  .hovered:hover{
+      border: 2px solid #8a49c6;
+      cursor: pointer;
+  }
+  .button-top {
+    margin-bottom: 10px !important;
+    background: white;
+    width: max-content;
+    padding: 2px 0px;
+    border-radius: 6px;
+    margin-top: 10px;
+    .btn-primary {
+      background-color: white;
+      border-color: white;
+      font-family: Montserrat;
+      font-style: normal;
+      font-size: 12px;
+      line-height: 18px;
+      text-align: center;
+      color: #727373;
+      padding: 9px 30px;
+    }
+    .active {
+      border: none !important;
+      background: #8A49C6 !important;
+      border: #8A49C6 ;
+      color: white;
+    }
+    label.focus {
+      outline: none;
+    }
+  }

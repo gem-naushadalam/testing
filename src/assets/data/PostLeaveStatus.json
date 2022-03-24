@@ -1,0 +1,63 @@
+{
+  "leave": [
+    {
+      "recordId": 1,
+      "leaveRequestApplicationId": 3,
+      "statusId": 4,
+      "approverId": "1",
+      "approverRemarks": "Testing Reason",
+      "createdDate": "2021-03-30",
+      "statusCode": "PV",
+      "status": "Pending for Verification",
+      "createdBy": "101"
+    },
+    {
+      "id": 2,
+      "recordId": 2,
+      "leaveRequestApplicationId": 3,
+      "statusId": 4,
+      "approverId": "1",
+      "approverRemarks": "Testing Reason",
+      "createdDate": "2021-03-30",
+      "statusCode": "PV",
+      "status": "Pending for Verification",
+      "createdBy": "101"
+    },
+    {
+      "id": 3,
+      "recordId": 2,
+      "leaveRequestApplicationId": 3,
+      "statusId": 4,
+      "approverId": "1",
+      "approverRemarks": "Testing Reason",
+      "createdDate": "2021-03-30",
+      "statusCode": "PV",
+      "status": "Pending for Verification",
+      "createdBy": "101"
+    },
+    {
+      "id": 4,
+      "recordId": 2,
+      "leaveRequestApplicationId": 3,
+      "statusId": 4,
+      "approverId": "1",
+      "approverRemarks": "Testing Reason",
+      "createdDate": "2021-03-30",
+      "statusCode": "PV",
+      "status": "Pending for Verification",
+      "createdBy": "101"
+    },
+    {
+      "id": 5,
+      "recordId": 2,
+      "leaveRequestApplicationId": 3,
+      "statusId": 4,
+      "approverId": "1",
+      "approverRemarks": "Testing Reason",
+      "createdDate": "2021-03-30",
+      "statusCode": "PV",
+      "status": "Pending for Verification",
+      "createdBy": "101"
+    }
+  ]
+}

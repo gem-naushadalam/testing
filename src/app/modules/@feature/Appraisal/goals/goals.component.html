@@ -1,0 +1,312 @@
+<div class="main-wrapper">
+  <div class="top-wrapper">
+    <div class="top">
+      <div class="text" *ngIf="show">
+        My Goals
+      </div>
+      <div class="text" *ngIf="Goals">
+        Add Goals
+      </div>
+      <div class="button-wrapper" *ngIf="show">
+        <button (click)="Upload()" class="btn btn-primary">
+          Add Goals
+        </button>
+      </div>
+      <div *ngIf="Goals" class="range-wrapper">
+        <span>Financial Year</span>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Enter a date range</mat-label>
+          <mat-date-range-input [rangePicker]="picker">
+            <input matStartDate placeholder="Start date">
+            <input matEndDate placeholder="End date">
+          </mat-date-range-input>
+          <mat-datepicker-toggle matSuffix [for]="picker">
+            <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+          </mat-datepicker-toggle>
+          <mat-date-range-picker #picker></mat-date-range-picker>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="middle_wrapper" *ngIf="Goals">
+      <div id="content">
+        <div class="middle" *ngFor="let divData of data; let i = index">
+          <div class="goal-type">
+            <h3>Goal TYPE</h3>
+            <mat-form-field class="filter">
+              <mat-label>Goal Type</mat-label>
+              <mat-select>
+                <mat-option [value]="''">ALL</mat-option>
+                <mat-option *ngFor="let type of goals" [value]="type">{{ type }}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="start-date">
+            <h3>Goal Start Date</h3>
+            <mat-form-field>
+              <mat-label>dd/mm/yyyy</mat-label>
+              <input matInput [matDatepicker]="picker1">
+              <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+              <mat-datepicker #picker1></mat-datepicker>
+            </mat-form-field>
+
+          </div>
+          <div class="end-date">
+            <h3>Goal End Date</h3>
+            <mat-form-field>
+              <mat-label>dd/mm/yyyy</mat-label>
+              <input matInput [matDatepicker]="picker2">
+              <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+              <mat-datepicker #picker2></mat-datepicker>
+            </mat-form-field>
+
+          </div>
+          <div class="description">
+            <h3>Goal Description</h3>
+            <mat-form-field>
+              <textarea matInput></textarea>
+            </mat-form-field>
+          </div>
+          <div class="delete_icon">
+            <button (click)="data.splice(i, 1)">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M5.4375 1.62H5.25C5.35313 1.62 5.4375 1.539 5.4375 1.44V1.62H12.5625V1.44C12.5625 1.539 12.6469 1.62 12.75 1.62H12.5625V3.24H14.25V1.44C14.25 0.64575 13.5773 0 12.75 0H5.25C4.42266 0 3.75 0.64575 3.75 1.44V3.24H5.4375V1.62ZM17.25 3.24H0.75C0.335156 3.24 0 3.56175 0 3.96V4.68C0 4.779 0.084375 4.86 0.1875 4.86H1.60312L2.18203 16.6275C2.21953 17.3948 2.88047 18 3.67969 18H14.3203C15.1219 18 15.7805 17.397 15.818 16.6275L16.3969 4.86H17.8125C17.9156 4.86 18 4.779 18 4.68V3.96C18 3.56175 17.6648 3.24 17.25 3.24ZM14.1398 16.38H3.86016L3.29297 4.86H14.707L14.1398 16.38Z"
+                  fill="#EB3232" />
+              </svg>
+
+            </button>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="btn-wrapper">
+        <button class="btn btn-primary " (click)='onAddData()' type="submit">
+
+          <i class="fa fa-plus" aria-hidden="true"></i>
+        </button>
+        <button class="btn btn-primary draft" (click)='Draft()' type="submit">
+          <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M0.00351739 13.0108C0.0703477 12.8138 0.200491 12.6591 0.348221 12.5149C4.40728 8.45932 8.46283 4.40377 12.5184 0.344704C12.6661 0.196974 12.8174 0.0668304 13.0143 0C13.1093 0 13.2007 0 13.2957 0C13.4962 0.0140696 13.6369 0.123109 13.7741 0.260287C15.0966 1.58634 16.4227 2.9124 17.7487 4.23494C17.8859 4.3686 17.9949 4.51281 18.009 4.7133C18.009 4.80827 18.009 4.89972 18.009 4.99469C17.9985 5.19518 17.8859 5.33588 17.7487 5.47306C13.6545 9.56026 9.56377 13.651 5.47305 17.7452C5.33939 17.8789 5.19518 17.9914 4.99469 18.0055C3.51739 18.0055 2.04008 18.0055 0.562782 18.0055C0.225113 17.9598 0.045726 17.7804 0 17.4427C0.00351739 15.9654 0.00351739 14.4881 0.00351739 13.0108Z"
+              fill="white" />
+          </svg>
+
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="wrapper__">
+    <div class="text" *ngIf="Goals">
+      My Goals
+    </div>
+
+    <mat-toolbar class="header">
+      <button mat-icon-button (click)="toggleSidenav()" [ngClass]="opened ? 'mat-raised-button' : ''"
+        matTooltip="Filters">
+        <mat-icon>filter_list</mat-icon>
+      </button>
+      <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item>
+          <span>Submit</span>
+        </button>
+        <button mat-menu-item>
+        <span>Export To Excel</span>
+        </button>
+      </mat-menu>
+
+    </mat-toolbar>
+
+    <div class="main">
+      <mat-sidenav-container class="main__container">
+        <mat-sidenav #sidenav position="start" mode="side" [(opened)]="opened" (opened)="events.push('open!')"
+        (closed)="events.push('close!')">
+   
+        <div class="sidenav__content">
+           
+        <li class="filter-item">
+          <a data-toggle="collapse" href="#year" role="button" aria-expanded="false">
+             Appraisal Year
+            <i class="material-icons rotate">expand_more</i>
+          </a>
+          <div class="collapse show" id="year">
+            <div class="ml-2 mb-2 mt-2">
+              <section>
+                <mat-form-field>
+                  <mat-label>Appraisal Cycle</mat-label>
+                <mat-select ([ngModel])="selectedYear">
+                  <mat-option *ngFor="let year of years" [value]="year">{{ year }}</mat-option> 
+                </mat-select>
+                </mat-form-field>
+              
+              </section>
+            </div>
+          </div>
+          </li>
+      
+          <li class="filter-item">
+            <a data-toggle="collapse" href="#type" role="button" aria-expanded="false" >
+               Goal Type
+              <i class="material-icons rotate">expand_more</i>
+            </a>
+            <div class="collapse show" id="type">
+              <div class="ml-2 mb-2 mt-2">
+                <section>
+                  <mat-checkbox color="primary">
+                    Learning
+                  </mat-checkbox>
+                <br>
+                  <mat-checkbox color="primary">
+                    Work Related
+                  </mat-checkbox>
+                  <br>
+                  <mat-checkbox color="primary" >
+                    Managerial
+                  </mat-checkbox>
+                  <br>
+                  <mat-checkbox color="primary" >
+                    Creative or Developmental
+                  </mat-checkbox>
+                </section>
+              </div>
+            </div>
+            </li>
+            <li class="filter-item">
+              <a data-toggle="collapse" href="#status" role="button" aria-expanded="false" aria-controls="interviewStatus">
+                 Status
+                <i class="material-icons rotate">expand_more</i>
+              </a>
+              <div class="collapse show" id="status">
+                <div class="ml-2 mb-2 mt-2">
+                  <section>
+                    <mat-checkbox color="primary" >
+                      Approved
+                    </mat-checkbox>
+                    <br>
+                    <mat-checkbox color="primary" >
+                      Submitted
+                    </mat-checkbox>
+                    <br>
+                    <mat-checkbox color="primary" >
+                      Drafted
+                    </mat-checkbox>
+                  </section>
+                </div>
+              </div>
+              </li>
+    
+            </div>
+      
+      </mat-sidenav>
+
+        <div class="table-wrapper">
+          <div class="table-goal" style="width: 100%; display: block; overflow-x: auto ; padding-bottom: 0px;">
+            <table mat-table [dataSource]="dataSource">
+
+              <!-- Checkbox Column -->
+              <ng-container matColumnDef="select">
+                <th mat-header-cell *matHeaderCellDef>
+                  <mat-checkbox (change)="$event ? masterToggle() : null"
+                    [checked]="selection.hasValue() && isAllSelected()"
+                    [indeterminate]="selection.hasValue() && !isAllSelected()">
+                  </mat-checkbox>
+                </th>
+                <td mat-cell *matCellDef="let row">
+                  <mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? selection.toggle(row) : null"
+                    [checked]="selection.isSelected(row)">
+                  </mat-checkbox>
+                </td>
+              </ng-container>
+
+              <!-- S.No Column  -->
+              <ng-container matColumnDef="year">
+                <th mat-header-cell *matHeaderCellDef>Financial Year</th>
+                <td mat-cell *matCellDef="let element">
+                  {{ element.year}}
+                </td>
+              </ng-container>
+
+              <!-- Form-Type Column -->
+              <ng-container matColumnDef="cycle">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                  Appraisal Cycle
+                </th>
+                <td mat-cell *matCellDef="let element">
+                  {{ element.cycle }}
+                </td>
+              </ng-container>
+
+              <ng-container matColumnDef="goaltype">
+                <th mat-header-cell *matHeaderCellDef>Goal Type</th>
+                <td mat-cell *matCellDef="let element">
+                  {{ element.goaltype }}
+                </td>
+              </ng-container>
+
+              <!-- My-form Column -->
+              <ng-container matColumnDef="goal">
+                <th mat-header-cell *matHeaderCellDef>Goal</th>
+                <td mat-cell *matCellDef="let element">
+                  {{ element.goal }}
+                </td>
+              </ng-container>
+
+              <!-- Status Column -->
+              <ng-container matColumnDef="status">
+                <th mat-header-cell *matHeaderCellDef>STATUS</th>
+                <td mat-cell *matCellDef="let element">
+                  {{ element.status}}
+                </td>
+              </ng-container>
+
+
+              <!-- Action Column -->
+              <ng-container matColumnDef="actions">
+                <th style="width: 15%" mat-header-cell *matHeaderCellDef>ACTION</th>
+                <td mat-cell *matCellDef="let element">
+                  <div class="action" style="justify-content: space-between;">
+
+                    <svg width="20" height="14" viewBox="0 0 20 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M10 3.11176C9.63201 3.11751 9.26672 3.17598 8.9153 3.28537C9.07785 3.57125 9.1644 3.89402 9.16669 4.22287C9.16669 5.29676 8.29613 6.16732 7.22224 6.16732C6.89339 6.16504 6.57062 6.07849 6.28474 5.91593C5.82219 7.52012 6.43804 9.24031 7.81362 10.1864C9.1892 11.1326 11.0159 11.0923 12.3484 10.0865C13.681 9.08074 14.2205 7.33509 13.6878 5.75283C13.155 4.17057 11.6696 3.10672 10 3.11176ZM19.8791 6.49371C17.9962 2.81975 14.2684 0.333984 9.99998 0.333984C5.73158 0.333984 2.00276 2.82148 0.120814 6.49405C-0.0402714 6.8127 -0.0402714 7.18895 0.120814 7.5076C2.0038 11.1816 5.73158 13.6673 9.99998 13.6673C14.2684 13.6673 17.9972 11.1798 19.8791 7.50725C20.0402 7.1886 20.0402 6.81235 19.8791 6.49371ZM9.99995 12.0007C6.5746 12.0007 3.43432 10.0909 1.73849 7.00065C3.43432 3.91037 6.57425 2.00065 9.99995 2.00065C13.4256 2.00065 16.5656 3.91037 18.2614 7.00065C16.5659 10.0909 13.4256 12.0007 9.99995 12.0007Z"
+                        fill="#9B2F9B" />
+                    </svg>
+
+                    <button>
+                      <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                          d="M16.32 15.385H0.68C0.303875 15.385 0 15.6889 0 16.065V16.83C0 16.9235 0.0765 17 0.17 17H16.83C16.9235 17 17 16.9235 17 16.83V16.065C17 15.6889 16.6961 15.385 16.32 15.385ZM3.09613 13.6C3.13863 13.6 3.18113 13.5957 3.22363 13.5894L6.79787 12.9625C6.84037 12.954 6.88075 12.9349 6.9105 12.903L15.9184 3.89512C15.9381 3.87547 15.9537 3.85211 15.9644 3.82641C15.975 3.8007 15.9805 3.77314 15.9805 3.74531C15.9805 3.71748 15.975 3.68992 15.9644 3.66422C15.9537 3.63851 15.9381 3.61516 15.9184 3.5955L12.3866 0.061625C12.3463 0.02125 12.2931 0 12.2358 0C12.1784 0 12.1253 0.02125 12.0849 0.061625L3.077 9.0695C3.04512 9.10137 3.026 9.13962 3.0175 9.18212L2.39062 12.7564C2.36995 12.8702 2.37734 12.9874 2.41214 13.0977C2.44695 13.2081 2.50813 13.3083 2.59037 13.3896C2.73062 13.5256 2.907 13.6 3.09613 13.6ZM4.52838 9.894L12.2358 2.18875L13.7934 3.74637L6.086 11.4516L4.19688 11.7852L4.52838 9.894Z"
+                          fill="#39A9E4" />
+                      </svg>
+                    </button>
+                    <button>
+                      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                          d="M4.83333 1.44H4.66667C4.75833 1.44 4.83333 1.368 4.83333 1.28V1.44H11.1667V1.28C11.1667 1.368 11.2417 1.44 11.3333 1.44H11.1667V2.88H12.6667V1.28C12.6667 0.574 12.0688 0 11.3333 0H4.66667C3.93125 0 3.33333 0.574 3.33333 1.28V2.88H4.83333V1.44ZM15.3333 2.88H0.666667C0.297917 2.88 0 3.166 0 3.52V4.16C0 4.248 0.075 4.32 0.166667 4.32H1.425L1.93958 14.78C1.97292 15.462 2.56042 16 3.27083 16H12.7292C13.4417 16 14.0271 15.464 14.0604 14.78L14.575 4.32H15.8333C15.925 4.32 16 4.248 16 4.16V3.52C16 3.166 15.7021 2.88 15.3333 2.88ZM12.5688 14.56H3.43125L2.92708 4.32H13.0729L12.5688 14.56Z"
+                          fill="#EB3232" />
+                      </svg>
+
+                    </button>
+
+                    <!-- <img src="../../../../../../assets/img/download.svg"> -->
+
+                  </div>
+                </td>
+              </ng-container>
+
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+            </table>
+          </div>
+        </div>
+        </mat-sidenav-container>
+    </div>
+
+  </div>
+</div>

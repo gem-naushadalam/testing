@@ -1,0 +1,224 @@
+* {
+  font-family: Lato;
+}
+
+.dashboard_top_inner {
+  display: flex;
+  justify-content: space-between;
+  //Today
+  .today {
+    width: 25%;
+    .today_inner {
+      display: flex;
+      .left {
+        .hour_circle {
+          background-color: #59cd8d;
+        }
+      }
+    }
+  }
+  //Yesterday
+  .yesterday {
+    width: 25%;
+    .yesterday_inner {
+      display: flex;
+      .left {
+        .hour_circle {
+          background-color: #ee627a;
+        }
+      }
+    }
+  }
+  // Average
+  .average {
+    width: 25%;
+    .average_inner {
+      display: flex;
+      .left {
+        .hour_circle {
+          background-color: #facf5b;
+        }
+      }
+      .right {
+        display: flex;
+        /* justify-content: center; */
+        flex: 1;
+        height: auto;
+        padding-left: 13%;
+        padding-top: 25px;
+        p {
+          margin-right: 10px;
+          font-size: 16px;
+        }
+        span {
+          padding-top: 2px;
+          fa-icon {
+            font-size: 16px;
+          }
+        }
+      }
+    }
+  }
+  // Leave
+  .leave {
+    width: 25%;
+    position: relative;
+    // border-left: 1px solid #ecedf4;
+    // padding-left: 30px !important;
+    .leave_inner {
+      display: flex;
+      .left {
+        .hour_circle {
+          background-color: #2285f4;
+        }
+      }
+      .right {
+        display: flex;
+        padding-left: 15px;
+        .leave_number {
+          margin-right: 10px;
+          p {
+            margin-bottom: 0px !important;
+          }
+        }
+        .leave_type {
+          padding-left: 0 !important;
+          span {
+            margin-bottom: 0px;
+          }
+        }
+      }
+      .right > div {
+        display: block !important;
+        width: auto !important;
+        span {
+          display: block;
+        }
+      }
+    }
+    .btn_wrapper {
+      min-width: auto;
+      button {
+        position: absolute;
+        right: 0;
+        border: 0;
+        outline: none;
+        background: #5d38db;
+        color: #fff;
+        display: block;
+        font-size: 11px;
+        line-height: 1;
+        padding: 10px 17px;
+        border-radius: 6px;
+        top: 15px;
+      }
+    }
+  }
+
+  //Common Classes
+  .left {
+    .hour_circle {
+      width: 65px;
+      height: 65px;
+      border-radius: 50%;
+      padding-top: 21px;
+      margin-bottom: 5px;
+      p {
+        margin: 0;
+        width: 100%;
+        text-align: center;
+        font-size: 25px;
+        font-weight: 400;
+        color: white;
+      }
+      span {
+        display: block;
+        width: 100%;
+        text-align: center;
+        font-size: 11px;
+        color: white;
+        font-weight: 100;
+      }
+    }
+    .day {
+      padding-top: 5px;
+      text-align: center;
+    }
+  }
+  .right {
+    flex: 1;
+    // padding-left: 0px !important;
+    padding-top: 15px;
+    div {
+      display: flex;
+      width: 100%;
+      padding-left: 25px;
+    }
+    span {
+      color: #a5a5a5;
+      font-size: 9px;
+      font-weight: 400;
+    }
+    p {
+      color: #494746;
+      font-size: 12px;
+      font-weight: 600;
+    }
+    .in_time {
+      p {
+        margin-bottom: 0 !important;
+      }
+      span {
+        min-width: 40px;
+        margin-right: 14px;
+      }
+    }
+    .out_time {
+      span {
+        min-width: 40px;
+        margin-right: 15px;
+      }
+    }
+  }
+}
+
+.dashboard_top_inner > div {
+  padding: 20px 0;
+}
+
+@media (max-width: 1200px) {
+  .leave_number {
+    padding-left: 10px !important;
+  }
+}
+
+@media (max-width: 1180px) {
+  .dashboard_top_inner {
+    flex-wrap: wrap;
+  }
+
+  .dashboard_top_inner > div {
+    width: 50% !important;
+    display: flex;
+    justify-content: center;
+    // padding: 10px 0 !important;
+  }
+
+  .dashboard_top_inner > div > div {
+    min-width: 200px;
+  }
+  .leave {
+    flex-wrap: wrap !important;
+  }
+
+  .btn_wrapper {
+    width: 100% !important;
+    padding: 10px 10px !important;
+    display: flex !important;
+    justify-content: center !important;
+    button {
+      top: 0 !important;
+      position: relative !important;
+    }
+  }
+}

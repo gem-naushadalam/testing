@@ -1,0 +1,40 @@
+.nav {
+  justify-content: center;
+  padding-top: 15px;
+}
+
+ul {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 0px !important;
+  li {
+    text-decoration: none;
+    list-style: none;
+    padding: 5px;
+  }
+}
+
+.btn-primary {
+  color: grey;
+  background-color: #fff;
+  border-color: white;
+  border-radius: 6px;
+  font-size: smaller;
+  text-decoration: none;
+  padding: 7px 29px;
+  font-family: "Lato", sans-serif;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 15px;
+  text-transform: uppercase;
+}
+
+.active {
+  // display: block !important;
+  background-color: #5d38db !important;
+  color: white !important;
+}

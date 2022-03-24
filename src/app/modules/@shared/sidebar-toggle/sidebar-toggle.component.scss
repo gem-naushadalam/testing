@@ -1,0 +1,28 @@
+.toggle_btn_wrapper {
+  padding-top: 12px;
+  .toggle_btn {
+    border: 0;
+    outline: 0;
+    background: transparent;
+    display: flex;
+    flex-direction: row-reverse;
+    width: 20px;
+    flex-wrap: wrap;
+    padding: 0;
+    span {
+      width: 20px;
+      height: 2px;
+      background: #dad7df;
+      display: block;
+      margin: 3.5px 0 4px;
+      border-radius: 5px;
+    }
+    .toggle_span1 {
+      margin: 0 !important;
+    }
+    .toggle_span3 {
+      margin: 0 !important;
+      width: 13px !important;
+    }
+  }
+}

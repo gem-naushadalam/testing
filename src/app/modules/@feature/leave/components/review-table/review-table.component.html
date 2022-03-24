@@ -1,0 +1,228 @@
+<div>
+  <div>
+    <div
+      class="table-responsive"
+      infiniteScroll
+      [infiniteScrollDistance]="2"
+      [infiniteScrollThrottle]="10"
+      (scrolled)="onScroll()"
+      [scrollWindow]="false"
+    >
+      <table class="table" mat-table [dataSource]="this.dataSource" matSort>
+        <span *ngIf="select">
+          <th mat-header-cell *matHeaderCellDef>
+            <mat-checkbox
+              (change)="$event ? masterToggle() : null"
+              [checked]="selection.hasValue() && isAllSelected()"
+              [indeterminate]="selection.hasValue() && !isAllSelected()"
+            >
+            </mat-checkbox>
+          </th>
+          <td mat-cell *matCellDef="let row">
+            <mat-checkbox
+              (click)="$event.stopPropagation()"
+              (change)="$event ? selection.toggle(row) : null"
+              [checked]="selection.isSelected(row)"
+            >
+            </mat-checkbox>
+          </td>
+        </span>
+
+        <ng-container
+          [matColumnDef]="column.key"
+          *ngFor="let column of displayedColumns"
+        >
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+            mat-sort-header
+            [disabled]="
+              column.key == 'period' || column.header == 'Applied For'
+                ? false
+                : true
+            "
+          >
+            {{ column.header | uppercase }}
+            <span
+              *ngIf="
+                column.header == 'Period' || column.header == 'Applied For'
+              "
+            >
+              &nbsp;&nbsp;<i class="fa fa-sort"></i>
+            </span>
+            <span *ngIf="column.header == 'status'">
+              <button
+                mat-button
+                matSuffix
+                mat-icon-button
+                aria-label="Clear"
+                [matMenuTriggerFor]="menu"
+              >
+                <mat-icon>filter_alt</mat-icon>
+              </button>
+            </span>
+            <mat-menu #menu>
+              <ng-template matMenuContent>
+                <div class="ml-2 mb-2 mt-2">
+                  <section>
+                    <mat-checkbox
+                      *ngFor="let status of statusEntries"
+                      class="example-margin"
+                      [checked]="isChecked('status', status)"
+                      (change)="
+                        change(statusEntries, 'status', status, $event.checked)
+                      "
+                    >
+                      {{ status }}
+                    </mat-checkbox>
+                  </section>
+                </div>
+              </ng-template>
+            </mat-menu>
+            <mat-menu #name>
+              <ng-template matMenuContent>
+                <div class="ml-2 mb-2 mt-2">
+                  <mat-checkbox
+                    class="mat-option"
+                    [indeterminate]="isIndeterminate()"
+                    [checked]="isCheckedd()"
+                    (click)="$event.stopPropagation()"
+                    (change)="toggleSelection($event)"
+                  >
+                    Select All
+                  </mat-checkbox>
+                  <mat-checkbox
+                    *ngFor="let team of statusEntries"
+                    [value]="team"
+                    >{{ team }}</mat-checkbox
+                  >
+                </div>
+              </ng-template>
+            </mat-menu>
+            <span *ngIf="column.key == 'select'">
+              <mat-checkbox
+                (change)="$event ? masterToggle() : null"
+                [checked]="selection.hasValue() && isAllSelected()"
+                [indeterminate]="selection.hasValue() && !isAllSelected()"
+              >
+              </mat-checkbox>
+            </span>
+          </th>
+          <td mat-cell *matCellDef="let emp; let i = index">
+            <span *ngIf="column.key == 'select'">
+              <mat-checkbox
+                (click)="$event.stopPropagation()"
+                (change)="$event ? selection.toggle(emp) : null"
+                [checked]="selection.isSelected(emp)"
+              >
+              </mat-checkbox>
+            </span>
+            <span *ngIf="column.header === 'Period'">
+              <ng-container
+                >{{ emp.fromDate | date: "mediumDate" }} -
+                {{ emp.tillDate | date: "mediumDate" }}
+              </ng-container>
+            </span>
+            <span *ngIf = "column.header === 'Type'">
+              <span *ngIf = "emp.leaveCombination.includes('1.05CLOY')">
+                <ng-container>
+                  {{emp[column.key].slice(9)}} 
+                  (5CL Availed)
+                </ng-container>
+    
+              </span> 
+              <span *ngIf = "!emp.leaveCombination.includes('1.05CLOY')">
+                <ng-container>
+                  {{emp[column.key]}} 
+                </ng-container>
+              </span> 
+    
+            </span>
+
+            <span *ngIf="column.header === 'action'">
+              <span *ngIf="emp.status == 'APPROVED'">
+                <div class="action">
+                  <button style="cursor: no-drop">
+                    <i class="fa fa-check-circle-o font-size update"></i>
+                  </button>
+                </div>
+              </span>
+              <span *ngIf="emp.status == 'REJECTED'">
+                <div class="action">
+                  <button style="cursor: no-drop">
+                    <i class="fa fa-times font-size cancel"></i>
+                  </button>
+                </div>
+              </span>
+              <span *ngIf="emp.status == 'APPLIED'">
+                <ng-container>
+                  <div class="action" style="justify-content: space-between">
+                    <button (click)="approve(emp)">
+                      <i class="fa fa-check-circle-o font-size"></i>
+                    </button>
+
+                    <button (click)="reject(emp)">
+                      <i class="fa fa-times font-size"></i>
+                    </button>
+                  </div>
+                </ng-container>
+              </span>
+            </span>
+
+            <span
+              *ngIf="column.key === 'status'"
+              [ngClass]="{
+                applied: emp.status === 'APPLIED',
+                approved: emp.status === 'APPROVED',
+                rejected: emp.status === 'REJECTED'
+              }"
+            >
+              <ng-container> {{ emp[column.key] }} </ng-container>
+            </span>
+            <span *ngIf="column.header === 'Outing Type'">
+              <ng-container>{{ emp.outingType.outingTypeName }}</ng-container>
+            </span>
+
+            <span *ngIf="column.key === 'appliedOn'">
+              <ng-container>{{
+                emp[column.key] | date: "YYYY-MM-dd"
+              }}</ng-container>
+            </span>
+            <span
+              *ngIf="column.key != 'appliedOn' && column.key !== 'status' && column.key !== 'leaveCombination'"
+            >
+              <ng-container>
+                {{ emp[column.key] }}
+              </ng-container>
+            </span>
+          </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumnsKeys; sticky: true"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumnsKeys"></tr>
+        <tr class="mat-row" *matNoDataRow>
+          <td class="mat-cell" colspan="8">No data matching the filter</td>
+        </tr>
+      </table>
+    </div>
+    <div class="approvebtn">
+      <button
+        class="btn btn-primary"
+        (click)="bulkapprove()"
+        [disabled]="selection.selected.length == 0"
+      >
+        <i class="fa fa-check"></i>
+        &nbsp;
+        <span
+          [matTooltip]="
+            selection.selected.length == 0
+              ? 'Please select atleast one leave'
+              : ''
+          "
+          [matTooltipPosition]="'above'"
+          [matTooltipClass]="'tooltip-pd'"
+          >Bulk Approve</span
+        >
+      </button>
+    </div>
+  </div>
+</div>

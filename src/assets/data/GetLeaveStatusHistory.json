@@ -1,0 +1,37 @@
+{
+  "leaves": [
+    {
+      "recordId": 1,
+      "leaveRequestApplicationId": 1,
+      "statusId": 2,
+      "approverId": "42",
+      "approverRemarks": "Enjoy",
+      "createdDate": "2021-03-30",
+      "statusCode": "PV",
+      "status": "Pending for Verification",
+      "createdBy": "42"
+    },
+    {
+      "recordId": 2,
+      "leaveRequestApplicationId": 1,
+      "statusId": 3,
+      "approverId": "48",
+      "approverRemarks": "Enjoy",
+      "createdDate": "2021-03-30",
+      "statusCode": "AP",
+      "status": "Approved",
+      "createdBy": "42"
+    },
+    {
+      "recordId": 3,
+      "leaveRequestApplicationId": 1,
+      "statusId": 4,
+      "approverId": "234",
+      "approverRemarks": "Enjoy",
+      "createdDate": "2021-03-30",
+      "statusCode": "AV",
+      "status": "Availed(Approved)",
+      "createdBy": "234"
+    }
+  ]
+}

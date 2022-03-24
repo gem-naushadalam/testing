@@ -1,0 +1,57 @@
+<div class="main">
+  <div class="inner">
+    <div class="top">
+      <h3>Share Feedback</h3>
+    </div>
+    <form [formGroup]="addFeedbackForm" (ngSubmit)="onSubmitFeedback()">
+      <div class="bottom">
+        <div class="share-feedback-wrapper">
+          <div class="inner">
+            <div class="feedback">
+              <div class="subject-wrapper">
+                <label for="subject">Subject</label>
+                <input
+                  type="text"
+                  placeholder="Subject"
+                  formControlName="tittle"
+                  name="tittle"
+                />
+                <span
+                  class="text-danger"
+                  *ngIf="
+                    addFeedbackForm.controls['tittle'].hasError('required') &&
+                    addFeedbackForm.controls['tittle'].touched
+                  "
+                  >Subject is required</span
+                >
+              </div>
+              <div class="comment-wrapper">
+                <label for="Comment">Comment</label>
+                <textarea
+                  placeholder="Remarks"
+                  id=""
+                  cols="30"
+                  rows="10"
+                  formControlName="remarks"
+                ></textarea>
+                <span
+                  class="text-danger"
+                  *ngIf="
+                    addFeedbackForm.controls['remarks'].hasError('required') &&
+                    addFeedbackForm.controls['remarks'].touched
+                  "
+                  >Comment is required</span
+                >
+              </div>
+            </div>
+            <div class="submit-btn-wrapper">
+              <button type="submit" class="btn btn-success btn-lg" [disabled]="!addFeedbackForm.valid">
+                Submit
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

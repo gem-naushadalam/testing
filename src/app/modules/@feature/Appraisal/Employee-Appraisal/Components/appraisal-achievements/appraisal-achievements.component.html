@@ -1,0 +1,92 @@
+<!-- <div class="main_wrapper">
+  <app-breadcrumb></app-breadcrumb>
+  <div class="inner">
+    <div class="title">
+      <h3>My Achievement</h3>
+    </div>
+    <div class="achievements_wrapper">
+      <div class="achievements">
+        <p>
+          2. Develop leadership skill for improving management and understanding
+          among the team members and if required will lead the team. Develop
+          leadership skill for improving management and understanding among the
+          team members and if required will lead the team
+        </p>
+      </div>
+      <div class="achievements">
+        <p>
+          3. Develop leadership skill for improving management and understanding
+          among the team members and if required will lead the team. Develop
+          leadership skill for improving management and understanding among the
+          team members and if required will lead the team
+        </p>
+      </div>
+      <div class="achievements">
+        <p>
+          4. Develop leadership skill for improving management and understanding
+          among the team members and if required will lead the team. Develop
+          leadership skill for improving management and understanding among the
+          team members and if required will lead the team
+        </p>
+      </div>
+      <div class="achievements">
+        <p>
+          5. Develop leadership skill for improving management and understanding
+          among the team members and if required will lead the team. Develop
+          leadership skill for improving management and understanding among the
+          team members and if required will lead the team
+        </p>
+      </div>
+      <div class="achievements">
+        <p>
+          6. Develop leadership skill for improving management and understanding
+          among the team members and if required will lead the team. Develop
+          leadership skill for improving management and understanding among the
+          team members and if required will lead the team
+        </p>
+      </div>
+
+      <div class="achievement_btn_wrapper">
+        <button class="save_btn">SAVE</button>
+        <button class="start_btn">START</button>
+      </div>
+    </div>
+  </div>
+  </div> -->
+
+<div class="main_wrapper">
+  <app-breadcrumb></app-breadcrumb>
+  <div class="inner">
+    <div class="title">
+      <h3>My Achievement</h3>
+    </div>
+    <div
+      class="achievements_wrapper"
+      *ngFor="let container of containers; index as i"
+    >
+      <div class="achievements" *ngIf="!container.edit; else other_content">
+        <p>
+          {{ container.value }}
+        </p>
+      </div>
+
+      <!-- <div>content here ...</div> -->
+
+      <ng-template #other_content>
+        <textarea [(ngModel)]="container.value"> </textarea>
+      </ng-template>
+      <button (click)="toggleEdit(i)">
+        {{ container.edit ? "Save" : "Edit" }}
+      </button>
+      <button *ngIf="!container.edit">Delete</button>
+      <!-- <button>Delete</button> -->
+    </div>
+  </div>
+  <div>
+    <button (click)="add()">Add</button>
+  </div>
+  <div class="achievement_btn_wrapper">
+    <button class="save_btn">SAVE</button>
+    <button class="start_btn">START</button>
+  </div>
+</div>

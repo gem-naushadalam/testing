@@ -1,0 +1,63 @@
+.button {
+  margin: 10px;
+  height: 35px;
+  border: none;
+  background-color: #56bb4a;
+  border-color: #56bb4a;
+  padding: 0 18px;
+  border-radius: 5px;
+  color: white;
+}
+// .mat-dialog-content {
+//   padding: 0 40px !important;
+//   margin: 0 !important;
+// }
+.mat-dialog-actions {
+  padding: 8px 0;
+  display: flex;
+  flex-wrap: wrap;
+  min-height: 52px;
+  align-items: center;
+  margin-bottom: -24px;
+  justify-content: center;
+}
+.snackbar-danger,
+.snackbar-success {
+  color: white;
+  font-weight: bolder;
+  font-size: 15px;
+  z-index: 999999;
+  background-color: #dc3300;
+}
+.mat-button,
+.mat-flat-button,
+.mat-icon-button,
+.mat-stroked-button {
+  box-sizing: border-box;
+  position: relative;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  outline: 0;
+  border: none;
+  -webkit-tap-highlight-color: transparent;
+  display: inline-block;
+  white-space: nowrap;
+  text-decoration: none;
+  vertical-align: baseline;
+  text-align: center;
+  margin: 0;
+  min-width: 64px;
+  line-height: 36px;
+  padding: 0 16px;
+  border-radius: 4px;
+  overflow: visible;
+}
+.mat-button {
+  outline: none;
+  background-color: #5d38db;
+  color: white;
+  box-shadow: 0 8px 14px 0 rgba(93, 56, 219, 0.45);
+}

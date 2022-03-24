@@ -1,0 +1,634 @@
+<div class="main-wrapper">
+  <app-breadcrumb></app-breadcrumb>
+
+  <div class="btn-group-toggle button-top" data-toggle="buttons">
+    <label class="btn btn-primary btn-lg active" (click)="Ontechnical()">
+      <input type="radio" name="options" id="option2" checked />
+      Technical Competency
+    </label>
+
+    <label class="btn btn-primary btn-lg" (click)="Onbehavioural()">
+      <input type="radio" name="options" id="option2" />
+      Behavioural Competency
+    </label>
+  </div>
+  <div *ngIf="technical" class="technical">
+    <div class="feature-div">
+      <h3 class="feature">Delivery of Project</h3>
+
+      <div class="main">
+        <div class="top">
+          <div class="self"></div>
+
+          <div class="rating">
+            <span>RATING</span>
+            <div class="hover-me">
+              <i class="fa fa-info-circle"></i>
+              <div class="hide">
+                <span class="serial-number">1</span>
+                <p class="serial-comment">Below Expectation</p>
+                <span class="serial-number">2</span>
+                <p class="serial-comment">Meets Some Expectations</p>
+                <span class="serial-number">3</span>
+                <p class="serial-comment">Meets Expectations</p>
+                <span class="serial-number">4</span>
+                <p class="serial-comment">Exceeds Expectation</p>
+                <span class="serial-number">5</span>
+                <p class="serial-comment">Super Exceeds Expectation</p>
+              </div>
+            </div>
+          </div>
+          <div class="comment">
+            <span>Comments</span>
+          </div>
+        </div>
+
+        <div class="bottom">
+          <div class="self">
+            <span>Self</span>
+            <i class="fa fa-info-circle"></i>
+          </div>
+          <div class="rating">
+            <div class="row">
+              <div class="col-sm-12">
+                <ul
+                  class="list-inline rating-list"
+                  *ngFor="let star of stars; let i = index"
+                  style="display: inline-block"
+                >
+                  <li
+                    (click)="countStar(star)"
+                    [ngClass]="{ selected: star <= selectedValue }"
+                  >
+                    <span class="fa-stack fa-lg">
+                      <i class="fa fa-circle fa-stack-2x"></i>
+                      <strong class="fa-stack-1x"> {{ i + 1 }}</strong>
+                    </span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="comment">
+            <span
+              >Works efficiently and effectively to meet deadlines regardless of
+              whether one is under pressure or not</span
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="feature-div">
+      <h3 class="feature">Designing</h3>
+
+      <div class="main">
+        <div class="top">
+          <div class="self"></div>
+
+          <div class="rating">
+            <span>RATING</span>
+            <div class="hover-me">
+              <i class="fa fa-info-circle"></i>
+              <div class="hide">
+                <span class="serial-number">1</span>
+                <p class="serial-comment">Below Expectation</p>
+                <span class="serial-number">2</span>
+                <p class="serial-comment">Meets Some Expectations</p>
+                <span class="serial-number">3</span>
+                <p class="serial-comment">Meets Expectations</p>
+                <span class="serial-number">4</span>
+                <p class="serial-comment">Exceeds Expectation</p>
+                <span class="serial-number">5</span>
+                <p class="serial-comment">Super Exceeds Expectation</p>
+              </div>
+            </div>
+          </div>
+          <div class="comment">
+            <span>Comments</span>
+          </div>
+        </div>
+
+        <div class="bottom">
+          <div class="self">
+            <span>Self</span>
+            <i class="fa fa-info-circle"></i>
+          </div>
+          <div class="rating">
+            <div class="row">
+              <div class="col-sm-12">
+                <ul
+                  class="list-inline rating-list"
+                  *ngFor="let star of stars; let i = index"
+                  style="display: inline-block"
+                >
+                  <li
+                    (click)="countStar(star)"
+                    [ngClass]="{ selected: star <= selectedValue }"
+                  >
+                    <span class="fa-stack fa-lg">
+                      <i class="fa fa-circle fa-stack-2x"></i>
+                      <strong class="fa-stack-1x"> {{ i + 1 }}</strong>
+                    </span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="comment">
+            <span
+              >Works efficiently and effectively to meet deadlines regardless of
+              whether one is under pressure or not</span
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="feature-div">
+      <h3 class="feature">Problem Solving</h3>
+
+      <div class="main">
+        <div class="top">
+          <div class="self"></div>
+
+          <div class="rating">
+            <span>RATING</span>
+            <div class="hover-me">
+              <i class="fa fa-info-circle"></i>
+              <div class="hide">
+                <span class="serial-number">1</span>
+                <p class="serial-comment">Below Expectation</p>
+                <span class="serial-number">2</span>
+                <p class="serial-comment">Meets Some Expectations</p>
+                <span class="serial-number">3</span>
+                <p class="serial-comment">Meets Expectations</p>
+                <span class="serial-number">4</span>
+                <p class="serial-comment">Exceeds Expectation</p>
+                <span class="serial-number">5</span>
+                <p class="serial-comment">Super Exceeds Expectation</p>
+              </div>
+            </div>
+          </div>
+          <div class="comment">
+            <span>Comments</span>
+          </div>
+        </div>
+
+        <div class="bottom">
+          <div class="self">
+            <span>Self</span>
+            <i class="fa fa-info-circle"></i>
+          </div>
+          <div class="rating">
+            <div class="row">
+              <div class="col-sm-12">
+                <ul
+                  class="list-inline rating-list"
+                  *ngFor="let star of stars; let i = index"
+                  style="display: inline-block"
+                >
+                  <li
+                    (click)="countStar(star)"
+                    [ngClass]="{ selected: star <= selectedValue }"
+                  >
+                    <span class="fa-stack fa-lg">
+                      <i class="fa fa-circle fa-stack-2x"></i>
+                      <strong class="fa-stack-1x"> {{ i + 1 }}</strong>
+                    </span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="comment">
+            <span
+              >Works efficiently and effectively to meet deadlines regardless of
+              whether one is under pressure or not</span
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="behavioural" class="behavioural">
+    <div class="feature-div">
+      <h3 class="feature">Reliability</h3>
+      <div class="main">
+        <div class="top">
+          <div class="self"></div>
+
+          <div class="rating">
+            <span>RATING</span>
+            <div class="hover-me">
+              <i class="fa fa-info-circle"></i>
+              <div class="hide">
+                <span class="serial-number">1</span>
+                <p class="serial-comment">Below Expectation</p>
+                <span class="serial-number">2</span>
+                <p class="serial-comment">Meets Some Expectations</p>
+                <span class="serial-number">3</span>
+                <p class="serial-comment">Meets Expectations</p>
+                <span class="serial-number">4</span>
+                <p class="serial-comment">Exceeds Expectation</p>
+                <span class="serial-number">5</span>
+                <p class="serial-comment">Super Exceeds Expectation</p>
+              </div>
+            </div>
+          </div>
+          <div class="comment">
+            <span>Comments</span>
+          </div>
+        </div>
+
+        <div class="bottom">
+          <div class="self">
+            <span>Self</span>
+            <i class="fa fa-info-circle"></i>
+          </div>
+          <div class="rating">
+            <div class="row">
+              <div class="col-sm-12">
+                <ul
+                  class="list-inline rating-list"
+                  *ngFor="let star of stars; let i = index"
+                  style="display: inline-block"
+                >
+                  <li
+                    (click)="countStar(star)"
+                    [ngClass]="{ selected: star <= selectedValue }"
+                  >
+                    <span class="fa-stack fa-lg">
+                      <i class="fa fa-circle fa-stack-2x"></i>
+                      <strong class="fa-stack-1x"> {{ i + 1 }}</strong>
+                    </span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="comment">
+            <span
+              >Works efficiently and effectively to meet deadlines regardless of
+              whether one is under pressure or not</span
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- interpersonal relationships -->
+    <div class="feature-div">
+      <h3 class="feature">INTERPERSONAL RELATIONSHIPS</h3>
+
+      <div class="main">
+        <div class="top">
+          <div class="self"></div>
+
+          <div class="rating">
+            <span>RATING</span>
+            <div class="hover-me">
+              <i class="fa fa-info-circle"></i>
+              <div class="hide">
+                <span class="serial-number">1</span>
+                <p class="serial-comment">Below Expectation</p>
+                <span class="serial-number">2</span>
+                <p class="serial-comment">Meets Some Expectations</p>
+                <span class="serial-number">3</span>
+                <p class="serial-comment">Meets Expectations</p>
+                <span class="serial-number">4</span>
+                <p class="serial-comment">Exceeds Expectation</p>
+                <span class="serial-number">5</span>
+                <p class="serial-comment">Super Exceeds Expectation</p>
+              </div>
+            </div>
+          </div>
+          <div class="comment">
+            <span>Comments</span>
+          </div>
+        </div>
+
+        <div class="bottom">
+          <div class="self">
+            <span>Self</span>
+            <i class="fa fa-info-circle"></i>
+          </div>
+          <div class="rating">
+            <div class="row">
+              <div class="col-sm-12">
+                <ul
+                  class="list-inline rating-list"
+                  *ngFor="let star of stars; let i = index"
+                  style="display: inline-block"
+                >
+                  <li
+                    (click)="countStar(star)"
+                    [ngClass]="{ selected: star <= selectedValue }"
+                  >
+                    <span class="fa-stack fa-lg">
+                      <i class="fa fa-circle fa-stack-2x"></i>
+                      <strong class="fa-stack-1x"> {{ i + 1 }}</strong>
+                    </span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="comment">
+            <span
+              >Works efficiently and effectively to meet deadlines regardless of
+              whether one is under pressure or not</span
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- orgaizational skills -->
+    <div class="feature-div">
+      <h3 class="feature">ORGANIZATIONAL SKILLS</h3>
+
+      <div class="main">
+        <div class="top">
+          <div class="self"></div>
+
+          <div class="rating">
+            <span>RATING</span>
+            <div class="hover-me">
+              <i class="fa fa-info-circle"></i>
+              <div class="hide">
+                <span class="serial-number">1</span>
+                <p class="serial-comment">Below Expectation</p>
+                <span class="serial-number">2</span>
+                <p class="serial-comment">Meets Some Expectations</p>
+                <span class="serial-number">3</span>
+                <p class="serial-comment">Meets Expectations</p>
+                <span class="serial-number">4</span>
+                <p class="serial-comment">Exceeds Expectation</p>
+                <span class="serial-number">5</span>
+                <p class="serial-comment">Super Exceeds Expectation</p>
+              </div>
+            </div>
+          </div>
+          <div class="comment">
+            <span>Comments</span>
+          </div>
+        </div>
+
+        <div class="bottom">
+          <div class="self">
+            <span>Self</span>
+            <i class="fa fa-info-circle"></i>
+          </div>
+          <div class="rating">
+            <div class="row">
+              <div class="col-sm-12">
+                <ul
+                  class="list-inline rating-list"
+                  *ngFor="let star of stars; let i = index"
+                  style="display: inline-block"
+                >
+                  <li
+                    (click)="countStar(star)"
+                    [ngClass]="{ selected: star <= selectedValue }"
+                  >
+                    <span class="fa-stack fa-lg">
+                      <i class="fa fa-circle fa-stack-2x"></i>
+                      <strong class="fa-stack-1x"> {{ i + 1 }}</strong>
+                    </span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="comment">
+            <span
+              >Works efficiently and effectively to meet deadlines regardless of
+              whether one is under pressure or not</span
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- INITIATIVE -->
+    <div class="feature-div">
+      <h3 class="feature">INITIATIVE</h3>
+
+      <div class="main">
+        <div class="top">
+          <div class="self"></div>
+
+          <div class="rating">
+            <span>RATING</span>
+            <div class="hover-me">
+              <i class="fa fa-info-circle"></i>
+              <div class="hide bottom-arrow">
+                <span class="serial-number">1</span>
+                <p class="serial-comment">Below Expectation</p>
+                <span class="serial-number">2</span>
+                <p class="serial-comment">Meets Some Expectations</p>
+                <span class="serial-number">3</span>
+                <p class="serial-comment">Meets Expectations</p>
+                <span class="serial-number">4</span>
+                <p class="serial-comment">Exceeds Expectation</p>
+                <span class="serial-number">5</span>
+                <p class="serial-comment">Super Exceeds Expectation</p>
+              </div>
+            </div>
+          </div>
+          <div class="comment">
+            <span>Comments</span>
+          </div>
+        </div>
+
+        <div class="bottom">
+          <div class="self">
+            <span>Self</span>
+            <i class="fa fa-info-circle"></i>
+          </div>
+          <div class="rating">
+            <div class="row">
+              <div class="col-sm-12">
+                <ul
+                  class="list-inline rating-list"
+                  *ngFor="let star of stars; let i = index"
+                  style="display: inline-block"
+                >
+                  <li
+                    (click)="countStar(star)"
+                    [ngClass]="{ selected: star <= selectedValue }"
+                  >
+                    <span class="fa-stack fa-lg">
+                      <i class="fa fa-circle fa-stack-2x"></i>
+                      <strong class="fa-stack-1x"> {{ i + 1 }}</strong>
+                    </span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="comment">
+            <span
+              >Works efficiently and effectively to meet deadlines regardless of
+              whether one is under pressure or not</span
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- COMMUNICATION SKILLS -->
+    <div class="feature-div">
+      <h3 class="feature">COMMUNICATION SKILLS</h3>
+
+      <div class="main">
+        <div class="top">
+          <div class="self"></div>
+
+          <div class="rating">
+            <span>RATING</span>
+            <div class="hover-me">
+              <i class="fa fa-info-circle"></i>
+              <div class="hide">
+                <span class="serial-number">1</span>
+                <p class="serial-comment">Below Expectation</p>
+                <span class="serial-number">2</span>
+                <p class="serial-comment">Meets Some Expectations</p>
+                <span class="serial-number">3</span>
+                <p class="serial-comment">Meets Expectations</p>
+                <span class="serial-number">4</span>
+                <p class="serial-comment">Exceeds Expectation</p>
+                <span class="serial-number">5</span>
+                <p class="serial-comment">Super Exceeds Expectation</p>
+              </div>
+            </div>
+          </div>
+          <div class="comment">
+            <span>Comments</span>
+          </div>
+        </div>
+
+        <div class="bottom">
+          <div class="self">
+            <span>Self</span>
+            <i class="fa fa-info-circle"></i>
+          </div>
+          <div class="rating">
+            <div class="row">
+              <div class="col-sm-12">
+                <ul
+                  class="list-inline rating-list"
+                  *ngFor="let star of stars; let i = index"
+                  style="display: inline-block"
+                >
+                  <li
+                    (click)="countStar(star)"
+                    [ngClass]="{ selected: star <= selectedValue }"
+                  >
+                    <span class="fa-stack fa-lg">
+                      <i class="fa fa-circle fa-stack-2x"></i>
+                      <strong class="fa-stack-1x"> {{ i + 1 }}</strong>
+                    </span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="comment">
+            <span
+              >Works efficiently and effectively to meet deadlines regardless of
+              whether one is under pressure or not</span
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ADHERANCE TO QUALITY AND SAFETY STANDARDS -->
+    <div class="feature-div">
+      <h3 class="feature">ADHERANCE TO QUALITY AND SAFETY STANDARDS</h3>
+
+      <div class="main">
+        <div class="top">
+          <div class="self"></div>
+
+          <div class="rating">
+            <span>RATING</span>
+            <div class="hover-me">
+              <i class="fa fa-info-circle"></i>
+              <div class="hide">
+                <span class="serial-number">1</span>
+                <p class="serial-comment">Below Expectation</p>
+                <span class="serial-number">2</span>
+                <p class="serial-comment">Meets Some Expectations</p>
+                <span class="serial-number">3</span>
+                <p class="serial-comment">Meets Expectations</p>
+                <span class="serial-number">4</span>
+                <p class="serial-comment">Exceeds Expectation</p>
+                <span class="serial-number">5</span>
+                <p class="serial-comment">Super Exceeds Expectation</p>
+              </div>
+            </div>
+          </div>
+          <div class="comment">
+            <span>Comments</span>
+          </div>
+        </div>
+
+        <div class="bottom">
+          <div class="self">
+            <span>Self</span>
+            <i class="fa fa-info-circle"></i>
+          </div>
+          <div class="rating">
+            <div class="row">
+              <div class="col-sm-12">
+                <ul
+                  class="list-inline rating-list"
+                  *ngFor="let star of stars; let i = index"
+                  style="display: inline-block"
+                >
+                  <li
+                    (click)="countStar(star)"
+                    [ngClass]="{ selected: star <= selectedValue }"
+                  >
+                    <!-- <i class="fa fa-circle-o fa-stack-2x"></i> -->
+                    <!-- <span class="fa-fa-circle">
+                            <iclass="fa fa-circle fa-stack-2x"></i>
+                            <strong class="fa-stack-1x">
+                                {{i}}   
+                            </strong>
+                            <i class="fa-stack-1x ">1</i>
+                            </span> -->
+                    <!-- <span class="fa-stack">
+                                <span class="fa fa-circle-o fa-stack-2x"></span>
+                                <strong class="fa-stack-1x">
+                                    {{i+1}} 
+                                </strong>
+                            </span> -->
+                    <span class="fa-stack fa-lg">
+                      <i class="fa fa-circle fa-stack-2x"></i>
+                      <strong class="fa-stack-1x"> {{ i + 1 }}</strong>
+                    </span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="comment">
+            <span
+              >Works efficiently and effectively to meet deadlines regardless of
+              whether one is under pressure or not</span
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Buttons -->
+
+  <div class="buttons">
+    <button class="save_btn">SAVE</button>
+    <button class="start_btn">START</button>
+  </div>
+</div>

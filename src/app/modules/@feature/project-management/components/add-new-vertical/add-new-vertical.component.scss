@@ -1,0 +1,136 @@
+.main {
+    margin-top: 30px;
+    .items {
+        display: flex;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        .item {
+            .head {
+                span {
+                    font-family: "Montserrat", sans-serif;
+                    color: #727373;
+                    font-style: normal;
+                    font-weight: bold;
+                    font-size: 12px;
+                }
+            }
+            .input {
+                input {
+                    width: 300px;
+                    border-radius: 6px;
+                    height: 48px;
+                    background-color: white;
+                    border: none;
+                    font-family: "Lato", sans-serif;
+                    margin-top: 5px;
+                    margin-bottom: 10px;
+                    padding: 10px;
+                }
+            }
+            .input {
+                textarea {
+                    width: 889px;
+                    border-radius: 6px;
+                    height: 94px;
+                    background-color: white;
+                    border: none;
+                    font-family: "Lato", sans-serif;
+                    margin-top: 5px;
+                    margin-bottom: 10px;
+                    padding: 10px;
+                }
+            }
+        }
+    }
+    .button-wrapper {
+        display: flex;
+        padding: 25px 0;
+        justify-content: center;
+        button {
+          margin: 0 10px;
+        }
+        .save_btn {
+          border: 0;
+          height: 37px;
+          width: 90px;
+          // background: #21ae24;
+          color: #fff;
+          font-size: 12px;
+          line-height: 1;
+          padding: 10px 20px;
+          border-radius: 6px;
+          // margin-left: 25px !important;
+          font-family: "Montserrat", sans-serif;
+          box-shadow: -11px 9px 21px rgba(173, 182, 217, 0.170884);
+        }
+    
+        .close_btn {
+          height: 37px;
+          width: 90px;
+          border: 0;
+          outline: none;
+          background: #f70329;
+          color: #fff;
+          font-size: 12px;
+          line-height: 1;
+          padding: 10px 20px;
+          border-radius: 6px;
+          font-family: "Montserrat", sans-serif;
+        }
+      }
+}
+   .search-input{
+    position: relative;
+  }
+  .search-input.active input{
+    border-radius: 5px 5px 0 0;
+  }
+  .search-input .owner{
+    position: absolute;
+    width: 300px;
+    background: white;
+    max-height: 200px;
+    overflow-y: auto;
+    margin-top: -9px;
+    .owner-inner{
+        display: flex;
+        align-items: center;
+        padding: 8px;
+        font-family: "Montserrat",sans-serif;
+        font-size: 11px;
+        cursor: pointer;
+        border-bottom: 1px solid #eee
+    }
+    .owner-inner:hover{
+        background: #f3f3f3;
+    }
+  }
+  .search-input.active .owner{
+    padding: 10px 8px;
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .search-input.active .owner{
+    list-style: none;
+    padding: 8px 12px;
+    display: none;
+    width: 100%;
+    cursor: default;
+    border-radius: 3px;
+  }
+  .search-input.active .owner{
+    display: block;
+  }
+
+span.text-danger {
+  font-family: "Lato", sans-serif;
+}
+
+input.ng-touched.ng-invalid {
+  border: 1px solid red !important;
+}
+textarea.ng-touched.ng-invalid{
+  border: 1px solid red !important;
+}
+
+

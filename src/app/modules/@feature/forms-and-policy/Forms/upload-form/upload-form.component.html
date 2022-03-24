@@ -1,0 +1,35 @@
+<form [formGroup] = "uploadForm" >
+<div class="forms">
+  <div class="form-type">
+    <h3>Department</h3>
+    <mat-form-field class="filter">
+      <mat-label>Select Department</mat-label>
+      <mat-select formControlName ="departmentType" name="departmentType"> 
+        <mat-option [value]="''">ALL</mat-option>
+        <mat-option *ngFor="let type of forms" [value]="type">{{ type }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="upload-form">
+    <h3>Upload File</h3>
+  
+    <div class="file-upload">
+     
+      <input type="file" class="file-input" name="file" accept=".pdf,.xls,.xlxs" (change)="onChange($event)"
+      #fileUpload>
+      {{fileName}}
+      <button mat-mini-fab color="primary" class="upload-btn" (click)="fileUpload.click()">
+        BROWSE       
+      </button>
+
+    </div>
+    <span> Selected file format should be .xls, .xlsx or .pdf</span>
+  </div>
+    
+
+
+  <div class="btn-wrapper">
+  <button class="btn btn-primary" type="submit">UPLOAD</button>
+  </div>
+</div>
+</form>

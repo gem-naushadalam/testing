@@ -1,0 +1,249 @@
+<div class="main">
+  <div class="container-main">
+    <div class="inner">
+      <div class="top" *ngIf="errorFlag">
+        <!-- <h3>POLICIES</h3> -->
+        <div class="add-policy-btn">
+          <button (click)="Upload()" class="btn btn-primary">
+            ADD
+            <!-- *ngIf="show" -->
+          </button>
+        </div>
+        <div class="search-policy">
+          <mat-form-field class="search">
+            <input
+              matInput
+              class="form-field"
+              placeholder="Search"
+              (keyup)="doFilter($any($event.target).value)"
+            />
+            <mat-icon matSuffix>search</mat-icon>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="middle">
+        <div *ngIf="user">
+          <form [formGroup]="uploadPolicy" (ngSubmit)="onSubmit()">
+            <div class="add-policy-wrapper">
+              <div class="policy-name">
+                <h3>Policy Name</h3>
+                <mat-form-field>
+                  <mat-label>Policy Name</mat-label>
+                  <input
+                    matInput
+                    name="policyName"
+                    formControlName="policyName"
+                  />
+                </mat-form-field>
+              </div>
+              <div class="upload-form">
+                <h3>Upload File</h3>
+
+                <div class="file-upload">
+                  <input
+                    type="file"
+                    class="file-input"
+                    name="policyFile"
+                    accept=".pdf"
+                    (change)="onChange($event)"
+                    #fileUpload
+                  />
+                  {{ fileName }}
+                  <button
+                    mat-mini-fab
+                    type="button"
+                    color="primary"
+                    class="upload-btn"
+                    (click)="fileUpload.click()"
+                  >
+                    BROWSE
+                  </button>
+                </div>
+                <span> Selected file format should be .pdf</span>
+              </div>
+
+              <div class="btn-wrapper">
+                <button class="btn btn-primary" type="submit">UPLOAD</button>
+                <button
+                  class="btn btn-primary closed"
+                  type="button"
+                  (click)="Close()"
+                >
+                  CLOSE
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="bottom" *ngIf = "errorFlag">
+        <div
+          class="table-responsive"
+          style="
+            width: 100%;
+            display: block;
+            overflow-x: auto;
+            padding-bottom: 0px;
+          "
+        >
+          <table
+            mat-table
+            [dataSource]="dataSource"
+            class="mat-elevation-z8 table"
+          >
+            <!-- S.No Column  -->
+            <ng-container matColumnDef="position">
+              <th mat-header-cell *matHeaderCellDef>S.NO</th>
+              <td mat-cell *matCellDef="let element; let i = index">
+                {{ i + 1 }}
+              </td>
+            </ng-container>
+
+            <!-- Form-Type Column -->
+            <ng-container matColumnDef="type">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                POLICY NAME
+              </th>
+              <td mat-cell *matCellDef="let element">
+                <div *ngIf="!element.isEdit">
+                  {{ element.policyName }}
+                </div>
+                <div *ngIf="element.isEdit">
+                  <input
+                    type="text"
+                    class="form-control"
+                    [(ngModel)]="element.policyName"
+                  />
+                </div>
+              </td>
+            </ng-container>
+
+            <!-- Action Column -->
+            <ng-container matColumnDef="actions">
+              <th style="width: 15%" mat-header-cell *matHeaderCellDef>
+                ACTION
+              </th>
+              <td mat-cell *matCellDef="let element">
+                <div
+                  class="action"
+                  style="justify-content: space-between"
+                  *ngIf="!element.isEdit"
+                >
+                  <!-- PDF Viewer -->
+                  <ng-template #content let-modal>
+                    <div class="modal-header">
+                      <h4 class="modal-title" id="modal-basic-title">
+                        {{ element.policyName | uppercase }}
+                      </h4>
+                      <button
+                        type="button"
+                        class="close"
+                        aria-label="Close"
+                        (click)="modal.dismiss('Cross click')"
+                      >
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <pdf-viewer
+                        src="{{ url }}"
+                        [rotation]="0"
+                        [show-all]="true"
+                        style="display: block"
+                      ></pdf-viewer>
+                    </div>
+                  </ng-template>
+                  <button
+                    class="eye-btn"
+                    (click)="viewPolicy(element.policyId); open(content)"
+                  >
+                    <svg
+                      width="20"
+                      height="14"
+                      viewBox="0 0 20 14"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        clip-rule="evenodd"
+                        d="M10 3.11176C9.63201 3.11751 9.26672 3.17598 8.9153 3.28537C9.07785 3.57125 9.1644 3.89402 9.16669 4.22287C9.16669 5.29676 8.29613 6.16732 7.22224 6.16732C6.89339 6.16504 6.57062 6.07849 6.28474 5.91593C5.82219 7.52012 6.43804 9.24031 7.81362 10.1864C9.1892 11.1326 11.0159 11.0923 12.3484 10.0865C13.681 9.08074 14.2205 7.33509 13.6878 5.75283C13.155 4.17057 11.6696 3.10672 10 3.11176ZM19.8791 6.49371C17.9962 2.81975 14.2684 0.333984 9.99998 0.333984C5.73158 0.333984 2.00276 2.82148 0.120814 6.49405C-0.0402714 6.8127 -0.0402714 7.18895 0.120814 7.5076C2.0038 11.1816 5.73158 13.6673 9.99998 13.6673C14.2684 13.6673 17.9972 11.1798 19.8791 7.50725C20.0402 7.1886 20.0402 6.81235 19.8791 6.49371ZM9.99995 12.0007C6.5746 12.0007 3.43432 10.0909 1.73849 7.00065C3.43432 3.91037 6.57425 2.00065 9.99995 2.00065C13.4256 2.00065 16.5656 3.91037 18.2614 7.00065C16.5659 10.0909 13.4256 12.0007 9.99995 12.0007Z"
+                        fill="#9B2F9B"
+                      />
+                    </svg>
+                  </button>
+                  <button class="edit-btn" (click)="onOpenInput(element)">
+                    <svg
+                      width="17"
+                      height="17"
+                      viewBox="0 0 17 17"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M16.32 15.385H0.68C0.303875 15.385 0 15.6889 0 16.065V16.83C0 16.9235 0.0765 17 0.17 17H16.83C16.9235 17 17 16.9235 17 16.83V16.065C17 15.6889 16.6961 15.385 16.32 15.385ZM3.09613 13.6C3.13863 13.6 3.18113 13.5957 3.22363 13.5894L6.79787 12.9625C6.84037 12.954 6.88075 12.9349 6.9105 12.903L15.9184 3.89512C15.9381 3.87547 15.9537 3.85211 15.9644 3.82641C15.975 3.8007 15.9805 3.77314 15.9805 3.74531C15.9805 3.71748 15.975 3.68992 15.9644 3.66422C15.9537 3.63851 15.9381 3.61516 15.9184 3.5955L12.3866 0.061625C12.3463 0.02125 12.2931 0 12.2358 0C12.1784 0 12.1253 0.02125 12.0849 0.061625L3.077 9.0695C3.04512 9.10137 3.026 9.13962 3.0175 9.18212L2.39062 12.7564C2.36995 12.8702 2.37734 12.9874 2.41214 13.0977C2.44695 13.2081 2.50813 13.3083 2.59037 13.3896C2.73062 13.5256 2.907 13.6 3.09613 13.6ZM4.52838 9.894L12.2358 2.18875L13.7934 3.74637L6.086 11.4516L4.19688 11.7852L4.52838 9.894Z"
+                        fill="#39A9E4"
+                      />
+                    </svg>
+                  </button>
+                  <button
+                    class="delete-btn"
+                    (click)="onDelete(element.policyId)"
+                  >
+                    <svg
+                      width="16"
+                      height="16"
+                      viewBox="0 0 16 16"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M4.83333 1.44H4.66667C4.75833 1.44 4.83333 1.368 4.83333 1.28V1.44H11.1667V1.28C11.1667 1.368 11.2417 1.44 11.3333 1.44H11.1667V2.88H12.6667V1.28C12.6667 0.574 12.0688 0 11.3333 0H4.66667C3.93125 0 3.33333 0.574 3.33333 1.28V2.88H4.83333V1.44ZM15.3333 2.88H0.666667C0.297917 2.88 0 3.166 0 3.52V4.16C0 4.248 0.075 4.32 0.166667 4.32H1.425L1.93958 14.78C1.97292 15.462 2.56042 16 3.27083 16H12.7292C13.4417 16 14.0271 15.464 14.0604 14.78L14.575 4.32H15.8333C15.925 4.32 16 4.248 16 4.16V3.52C16 3.166 15.7021 2.88 15.3333 2.88ZM12.5688 14.56H3.43125L2.92708 4.32H13.0729L12.5688 14.56Z"
+                        fill="#EB3232"
+                      />
+                    </svg>
+                  </button>
+                </div>
+
+                <div
+                  class="action"
+                  style="justify-content: space-between"
+                  *ngIf="element.isEdit"
+                >
+                  <button (click)="onPolicyNameUpdate(element)">
+                    <i class="fa fa-check-circle-o font-size"></i>
+                  </button>
+
+                  <button>
+                    <i
+                      class="fa fa-times font-size"
+                      (click)="close(element)"
+                    ></i>
+                  </button>
+                </div>
+              </td>
+            </ng-container>
+            <!-- Status Column -->
+            <ng-container matColumnDef="status">
+              <th mat-header-cell *matHeaderCellDef>STATUS</th>
+              <td mat-cell *matCellDef="let element">
+                <mat-slide-toggle
+                  [(ngModel)]="element.active"
+                  (change)="onChangeStatus(element.policyId)"
+                >
+                </mat-slide-toggle>
+              </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+            <tr class="mat-row" *matNoDataRow>
+              <td class="mat-cell" colspan="8">No data Available</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf = "!errorFlag"> {{error}}</div>
+</div>

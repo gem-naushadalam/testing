@@ -1,0 +1,92 @@
+// * {
+//   font-family: "Lato", sans-serif !important;
+// }
+
+.main {
+  .inner {
+    .top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 30px 15px;
+      h3 {
+        font-size: 20px;
+        color: #393939;
+        font-family: "Montserrat", sans-serif;
+        font-weight: 700;
+        margin-bottom: 0;
+      }
+      .search-policy {
+        .search {
+          line-height: 10px;
+          height: 44px;
+          font-size: 14px;
+          background-color: white;
+          border-radius: 6px;
+          // max-width: 400px;
+          // width: 100%;
+          max-width: 300px;
+          width: 400px;
+          padding-left: 10px;
+        }
+        mat-form-field {
+          .mat-form-field-wrapper {
+            padding-bottom: 5px !important;
+          }
+        }
+      }
+    }
+    .bottom {
+      .policy-wrapper {
+        padding: 10px;
+        .inner-policy-wrapper {
+          display: flex;
+          background: white;
+          justify-content: space-between;
+          align-items: center;
+          padding: 10px 15px;
+        }
+        .left {
+          display: flex;
+          align-items: center;
+          .img-wrapper {
+            margin-right: 10px;
+            display: flex;
+            align-content: flex-start;
+          }
+          .pdf-topic {
+            padding-top: 5px;
+            p {
+              margin-bottom: 5px;
+              line-height: 1;
+              font-size: 12px;
+              font-weight: 700;
+              color: #393939;
+            }
+            span {
+              font-size: 12px;
+              font-weight: 400;
+              color: #828282;
+            }
+          }
+        }
+        .right {
+          .eye-btn {
+            border: none;
+            background: transparent;
+          }
+        }
+      }
+    }
+  }
+}
+
+.modal-body {
+  max-height: 80vh;
+  // width: -webkit-fill-available;
+  overflow: auto;
+
+  // .ng2-pdf-viewer-container {
+  //   position: relative !important;
+  // }
+}

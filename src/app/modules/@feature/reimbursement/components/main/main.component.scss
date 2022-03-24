@@ -1,0 +1,208 @@
+.top{
+    display: flex;
+    .button{
+        // text-align: end;
+        margin-top: 35px;
+        .btn-primary{
+            background: #8A49C6 !important;
+            border: #8A49C6 ;
+            border-radius: 6px;
+            font-family: 'Montserrat',sans-serif;
+      text-transform: uppercase;
+      font-size: small;
+    
+        }
+    }
+
+
+.button-top {
+    margin-bottom: 20px !important;
+    background: white;
+    width: 312px;
+    padding: 2px 0px;
+    border-radius: 6px;
+    margin-top: 25px;
+    .btn-primary {
+      background-color: white;
+      border-color: white;
+      font-family: Montserrat;
+      font-style: normal;
+      font-size: 12px;
+      line-height: 18px;
+      text-align: center;
+      color: #727373;
+      padding: 9px 30px;
+    }
+    .active {
+      border: none !important;
+      background: #8A49C6 !important;
+      border: #8A49C6 ;
+      color: white;
+    }
+    label.focus {
+      outline: none;
+    }
+  }
+}
+.button{
+  width: fit-content;
+  float: right;
+}
+.upload{
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-family: 'Montserrat';
+  font-weight: bold;
+  font-size: large;
+}
+
+.forms {
+  // width: 350px;
+  display: flex;
+  justify-content: space-between;
+  .textarea {
+    width: 889px;
+    border-radius: 6px;
+    height: 94px;
+    background-color: white;
+    border: none;
+    font-family: "Lato", sans-serif;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    padding: 10px;
+}
+  
+  .form-type {
+    h3 {
+      font-family: "Montserrat", sans-serif !important;
+      text-transform: uppercase;
+      color: #727373 !important;
+      font-size: 12px;
+      font-weight: bold;
+      margin-bottom: 2px !important;
+    }
+
+    .mat-form-field {
+      border: 1px solid rgba(151, 151, 151, 0.202814);
+      box-shadow: 0px 7px 64px rgba(0, 0, 0, 0.07);
+      font-family: "Lato", sans-serif !important;
+      line-height: 15px;
+    font-size: 14px;
+    background-color: white;
+    border-radius: 6px;
+    margin-bottom: 27px;
+    width: 320px;
+    height: 48px;
+    padding: 0px 7px;
+    }
+  }
+  .form-name{
+    h3 {
+      font-family: "Montserrat", sans-serif !important;
+      text-transform: uppercase;
+      color: #727373 !important;
+      font-size: 12px;
+      font-weight: bold;
+      margin-bottom: 10px !important;
+    }
+
+    .mat-form-field {
+      border: 1px solid rgba(151, 151, 151, 0.202814);
+      box-shadow: 0px 7px 64px rgba(0, 0, 0, 0.07);
+      font-family: "Lato", sans-serif !important;
+      line-height: 15px;
+      font-size: 14px;
+      background-color: white;
+      border-radius: 6px;
+      margin-bottom: 27px;
+      width: 320px;
+      height: 48px;
+      padding: 0px 7px;
+    }
+
+  }
+  .upload-form {
+    h3 {
+      font-family: "Montserrat", sans-serif !important;
+      text-transform: uppercase;
+      color: #727373 !important;
+      font-size: 12px;
+      font-weight: bold;
+      margin-bottom: 2px !important;
+    }
+    .file-input {
+      display: none;
+    }
+    .file-upload {
+      background: #ffffff;
+      border: 1px solid rgba(151, 151, 151, 0.202814);
+      box-shadow: 0px 7px 64px rgba(0, 0, 0, 0.07);
+      border-radius: 6px;
+      width: 320px;
+      height: 48px;
+      padding: 10px;
+      font-family: "Lato", sans-serif;
+      font-size: 15px;
+      line-height: 20px;
+      color: #9d99a0;
+      margin-bottom: 2px;
+
+      .upload-btn {
+        border: 1px solid #5d38db;
+        border-radius: 2px;
+        color: #5835d0;
+        background-color: #fff;
+        float: right;
+      }
+    }
+    span {
+      font-family: "Lato", sans-serif;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 15px;
+      line-height: 30px;
+      // color: #ff647c;
+    }
+  }
+}
+.btn-wrapper {
+    display: flex;
+    margin: auto;
+    width: fit-content;
+    margin-top: 40px;
+
+  .btn-primary {
+    background: #00c48c !important;
+    border-color: #00c48c;
+    border-radius: 6px;
+    font-family: "Montserrat", sans-serif;
+    font-weight: bold;
+    font-size: 14px;
+    text-align: center;
+    text-transform: uppercase;
+    color: #ffffff;
+    align-items: center;
+    margin-left: 10px;
+    padding: 8px 24px;
+  }
+  .closed {
+    background-color: #f5f6fa !important;
+    border-color: #00c48c;
+    color: #00c48c;
+  }
+}
+@media (min-width: 420px) {
+  img {
+    max-width: 48%;
+  }
+}
+@media (max-width: 1078px) {
+  .main {
+    flex-wrap: wrap;
+    .left {
+      margin: 0 auto !important;
+    }
+  }
+}
+
+

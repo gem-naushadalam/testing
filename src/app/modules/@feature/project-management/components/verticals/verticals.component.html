@@ -1,0 +1,171 @@
+<app-breadcrumb [item] = "verticals"></app-breadcrumb>
+
+<div class="main-wrapper">
+  <div class="top1">
+  <div class="bars">
+    <div class="btn-group-toggle button-top" data-toggle="buttons">
+        <label class="btn btn-primary btn-lg active">
+            <input type="radio"  [routerLink]="['/project-management']" name="options" id="option2" checked (click) = "checkVerticals()" />
+            Verticals
+        </label>
+
+        <label class="btn btn-primary btn-lg">
+            <input type="radio" name="options" id="option2" (click) = "checkIndustries()" />
+            Industries
+        </label>
+    </div>
+</div>
+  <div class="top">
+
+    <div class="button">
+      <div *ngIf = "verticals">
+      <button class="btn btn-primary" [routerLink]="['add-new-vertical']">ADD NEW VERTICAL</button>
+      </div>
+      <div *ngIf = "industries">
+      <button class="btn btn-primary" [routerLink]="['add-new-industry']">ADD NEW Industry</button>
+      </div>
+
+    </div>
+  </div>
+  </div>
+  <div *ngIf="verticals" class="cards">
+    <div fxLayout="row wrap" fxLayoutGap="30px grid">
+      <div
+        fxFlex="33.3%"
+        fxFlex.xs="100%"
+        fxFlex.sm="50%"
+        fxFlexAlign="stretch"
+        *ngFor= "let card of cards"
+      >
+        <mat-card class="mat-elevation-z4 hovered" routerLink ="{{card.verticalId}}@{{card.verticalName}}">
+          <div>
+            <mat-card-content >
+              <div class="name">
+                <span class="name">{{card.verticalName}}</span>
+
+              </div>
+              <div class="position">
+                <span class="text">Project Count : </span>
+                <span class="count"> {{card.projectCount}}</span>
+               
+                <span class="date"></span>
+              </div>
+              <div class="middle">
+                <div class="description-wrap">
+                  <div class="description-inner">
+                    <h4 class="description-label">Description</h4>
+                    <!-- <button
+                      (click)="onOpenTextarea()"
+                      class="edit-description"
+                      *ngIf="!isEditTextarea"
+                    >
+                      +
+                    </button>
+                    <button
+                      (click)="onOpenTextarea()"
+                      class="edit-description"
+                      *ngIf="isEditTextarea"
+                    >
+                      Edit
+                    </button> -->
+                  </div>
+                  <!-- <textarea row="4"></textarea> -->
+                  <div
+                    class="description"
+                  >
+                   {{card.description}}
+                  </div>
+                  <!-- <ng-template #other_content>
+                    <textarea
+                      rows="2"
+                      cols="72"
+                      placeholder="Project Description!"
+                    >
+                    </textarea>
+                  </ng-template> -->
+                </div>
+              </div>
+              <div class="owners">
+                  <span class="text">Owners</span>
+                  <br>
+                  <img
+                  width="50"
+                  height="50"
+                  src="{{ card.imgPath }}"
+                  style="
+                    margin-right: 10px;
+                    border-radius: 50%;
+                  "
+                />
+
+              </div>
+            </mat-card-content>
+          </div>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="industries" class="cards">
+    <div fxLayout="row wrap" fxLayoutGap="30px grid">
+      <div
+        fxFlex="33.3%"
+        fxFlex.xs="100%"
+        fxFlex.sm="50%"
+        fxFlexAlign="stretch"
+        *ngFor= "let card of cards"
+      >
+        <mat-card class="mat-elevation-z4 hovered" routerLink ="{{card.industryTypeId}}@{{card.industryType}}">
+          <div>
+            <mat-card-content >
+              <div class="name">
+                <span class="name">{{card.industryType}}</span>
+
+              </div>
+              <div class="position">
+                <span class="text">Project Count : </span>
+                <span class="count"> {{card.projectCount}}</span>
+               
+                <span class="date"></span>
+              </div>
+              <div class="middle">
+                <div class="description-wrap">
+                  <div class="description-inner">
+                    <h4 class="description-label">Description</h4>
+                    <!-- <button
+                      (click)="onOpenTextarea()"
+                      class="edit-description"
+                      *ngIf="!isEditTextarea"
+                    >
+                      +
+                    </button>
+                    <button
+                      (click)="onOpenTextarea()"
+                      class="edit-description"
+                      *ngIf="isEditTextarea"
+                    >
+                      Edit
+                    </button> -->
+                  </div>
+                  <!-- <textarea row="4"></textarea> -->
+                  <div
+                    class="description"
+                  >
+                   {{card.description}}
+                  </div>
+                  <!-- <ng-template #other_content>
+                    <textarea
+                      rows="2"
+                      cols="72"
+                      placeholder="Project Description!"
+                    >
+                    </textarea>
+                  </ng-template> -->
+                </div>
+              </div>
+            </mat-card-content>
+          </div>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>

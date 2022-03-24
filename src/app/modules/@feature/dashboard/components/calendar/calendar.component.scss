@@ -1,0 +1,21 @@
+.calendar{
+    .text{
+        width: 100%;
+        margin:auto;
+        height: 10px;
+        background-color: #fff;
+        h3{
+            text-align: center;
+            font-family: 'Montserrat' !important;
+            font-size: 14px !important;
+            font-weight: bold !important;
+            color: #727373;
+        }
+
+    }
+}
+.mat-calendar {
+    width: 100% !important;
+    height: 100% !important;
+    font-family: 'Montserrat' !important;
+}

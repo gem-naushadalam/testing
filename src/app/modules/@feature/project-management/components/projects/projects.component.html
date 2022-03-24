@@ -1,0 +1,334 @@
+<app-breadcrumb [item] = "check" ></app-breadcrumb>
+<div class="main-parent">
+  <div class="top-1">
+    <div class="button" *ngIf = "check">
+      <button class="btn btn-primary" routerLink="add-new-project">
+        Add New Project
+      </button>
+    </div>
+  </div>
+  <div class="accordian-wrapper">
+    <ng-container *ngIf="projects.length > 0; else noItems">
+      <div class="accordian" *ngFor="let project of projects; let index = index">
+        <mat-accordion>
+          <mat-expansion-panel (opened)="panelOpenState = true;" (closed)="panelOpenState = false">
+            <mat-expansion-panel-header>
+              <mat-panel-title> {{ project.projectName }} </mat-panel-title>
+              <mat-panel-description>
+                {{ panelOpenState ? "View Less" : "See More" }}
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+            <div class="main">
+              <div class="inner">
+                <div class="bottom">
+                  <div class="cards">
+                    <div fxLayout="row wrap">
+                      <div fxFlex="100%" fxFlex.xs="100%" fxFlex.sm="100%" fxFlexAlign="stretch">
+                        <mat-card class="mat-elevation-z4">
+                          <mat-card-content>
+                            <div class="card-wrapper">
+                              <div class="left">
+                                <div class="top">
+                                  <div class="description-wrap">
+                                    <div class="description-inner">
+                                      <h4 class="description-label">
+                                        Description
+                                      </h4>
+                                    </div>
+                                    <div class="description">
+                                      {{ project.description }}
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <!-- Right -->
+                              <div class="right">
+                                <div class="bottom-table">
+                                  <div class="table-responsive" style="
+                                      width: 100%;
+                                      display: block;
+                                      overflow-x: auto;
+                                      padding-bottom: 0px;
+                                    ">
+                                    <form [formGroup]="addMemberForm" (ngSubmit)="onSubmitMember(index,project)">
+                                      <table>
+                                        <thead>
+                                          <tr>
+                                            <th style="width: 25%">
+                                              <div class="member-wrapper">
+                                                <p>Members</p>
+                                                <button *ngIf="data[index].length == 0 && check"
+                                                  (click)="openAddMemberInput(index)" class="add-member-input">
+                                                  <img src="../../../../../../assets/icons/add-member.jpg"
+                                                    width="20px" />
+                                                </button>
+                                                <button  [disabled] = "addMemberForm.invalid" type=" submit" *ngIf="data[index].length != 0"
+                                                  class="save-member-btn btn-success btn">
+                                                  Save
+                                                </button>
+                                                <button (click)="closeAddMember(index)" *ngIf="data[index].length != 0"
+                                                  class="close-btn">
+                                                  Close
+                                                </button>
+                                                <button (click)="openAddMemberInput(index)"
+                                                  *ngIf="data[index].length != 0" type="button">
+                                                  +
+                                                </button>
+                                              </div>
+                                            </th>
+                                            <th style="width: 10%">Role</th>
+                                            <th style="width: 10%">Task</th>
+                                            <th style="width: 11%">
+                                              Allocated From
+                                            </th>
+                                            <th style="width: 10%">
+                                              Allocated Till
+                                            </th>
+                                            <th style="width: 10%">
+                                              Bandwidth
+                                            </th>
+                                            <th style="width: 10%">Shadow</th>
+                                            <th style="width: 5%">Actions</th>
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                          <div class="tr-wrapper" style="display: contents" formArrayName="members">
+                                            <tr *ngFor="
+                                                let divdata of data[index];
+                                                let i = index
+                                              " [formGroupName]="i">
+                                              <td>
+                                                <div class="search-input input">
+                                                  <input class="form-control" type="text" placeholder="Name"
+                                                    (keyup)="call($event, i)" formControlName="name" />
+                                                  <div class="owner">
+                                                    <div class="owner-inner" *ngFor="
+                                                        let d of emptyArray[i]
+                                                      " (click)="
+                                                        onMemberSelection(d, i)
+                                                      ">
+                                                      <img width="30" height="30" src="{{ d.imagePath }}" style="
+                                                          margin-right: 10px;
+                                                          border-radius: 15px;
+                                                        " />
+                                                      <div>
+                                                        <div>
+                                                          {{ d.employeeName }}
+                                                        </div>
+                                                        <div>{{ d.email }}</div>
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                              </td>
+                                              <td>
+                                                <mat-select placeholder="Role" formControlName="role"
+                                                  class="form-control" disableOptionCentering panelClass="myPanelClass">
+                                                  <mat-option *ngFor="let role of roles" [value]="role.roleTypeId">{{
+                                                    role.roleTypeName
+                                                    }}</mat-option>
+                                                </mat-select>
+                                              </td>
+                                              <td>
+                                                <mat-select placeholder="Tasks" formControlName="task"
+                                                  class="form-control" disableOptionCentering panelClass="myPanelClass">
+                                                  <mat-option *ngFor="let task of tasks" [value]="task.taskId">{{
+                                                    task.taskName
+                                                    }}</mat-option>
+                                                </mat-select>
+                                              </td>
+                                              <td>
+                                                <mat-form-field>
+                                                  <mat-label>dd/mm/yyyy</mat-label>
+                                                  <input matInput [matDatepicker]="picker1"
+                                                    formControlName="startDate" />
+                                                  <mat-datepicker-toggle matSuffix [for]="picker1">
+                                                  </mat-datepicker-toggle>
+                                                  <mat-datepicker #picker1></mat-datepicker>
+                                                </mat-form-field>
+                                              </td>
+                                              <td>
+                                                <mat-form-field>
+                                                  <mat-label>dd/mm/yyyy</mat-label>
+                                                  <input matInput [matDatepicker]="picker2" formControlName="endDate" />
+                                                  <mat-datepicker-toggle matSuffix [for]="picker2">
+                                                  </mat-datepicker-toggle>
+                                                  <mat-datepicker #picker2></mat-datepicker>
+                                                </mat-form-field>
+                                              </td>
+                                              <td>
+                                                <input formControlName="bandWidth"
+                                                  class="form-control bandwidth-input" />
+                                              </td>
+                                              <td>
+                                                <input type="checkbox" formControlName="shadow" class="form-control"
+                                                  style="
+                                                    width: 15px;
+                                                    height: 15px;
+                                                  " />
+                                              </td>
+                                              <td>
+                                                <button type="button" class="delete-btn" (click)="
+                                                    data[index].splice(i, 1); remove(i)
+                                                  ">
+                                                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path
+                                                      d="M4.83333 1.44H4.66667C4.75833 1.44 4.83333 1.368 4.83333 1.28V1.44H11.1667V1.28C11.1667 1.368 11.2417 1.44 11.3333 1.44H11.1667V2.88H12.6667V1.28C12.6667 0.574 12.0688 0 11.3333 0H4.66667C3.93125 0 3.33333 0.574 3.33333 1.28V2.88H4.83333V1.44ZM15.3333 2.88H0.666667C0.297917 2.88 0 3.166 0 3.52V4.16C0 4.248 0.075 4.32 0.166667 4.32H1.425L1.93958 14.78C1.97292 15.462 2.56042 16 3.27083 16H12.7292C13.4417 16 14.0271 15.464 14.0604 14.78L14.575 4.32H15.8333C15.925 4.32 16 4.248 16 4.16V3.52C16 3.166 15.7021 2.88 15.3333 2.88ZM12.5688 14.56H3.43125L2.92708 4.32H13.0729L12.5688 14.56Z"
+                                                      fill="#EB3232" />
+                                                  </svg>
+                                                </button>
+                                              </td>
+                                            </tr>
+                                          </div>
+                                          <tr *ngFor="
+                                              let element of array[project.projectId];
+                                              let i = index
+                                            ">
+                                            <td>
+                                              <div class="name-wrapper">
+                                                <img src="{{ element.imgPath }}" height="40px" width="40px" />
+                                                <div class="name">
+                                                  <p>
+                                                    {{ element.name }}
+                                                  </p>
+                                                  <p>{{ element.email }}</p>
+                                                </div>
+                                              </div>
+                                            </td>
+                                            <td>
+                                              <div *ngIf="!element.isEdit">
+                                                {{ element.roleTypeName }}
+                                              </div>
+
+                                              <div *ngIf="element.isEdit">
+                                                <mat-select placeholder="Role" formControlName="role"
+                                                  class="form-control" disableOptionCentering panelClass="myPanelClass">
+                                                  <mat-option *ngFor="let role of roles" [value]="role.roleTypeId">{{
+                                                    role.roleTypeName
+                                                    }}</mat-option>
+                                                </mat-select>
+                                              </div>
+                                            </td>
+                                            <td>
+                                              <div *ngIf="!element.isEdit">
+                                                {{ element.taskName }}
+                                              </div>
+                                              <div *ngIf="element.isEdit">
+                                                <mat-select placeholder="Tasks" formControlName="task"
+                                                  class="form-control" disableOptionCentering panelClass="myPanelClass">
+                                                  <mat-option *ngFor="let task of tasks" [value]="task.taskId">{{
+                                                    task.taskName
+                                                    }}</mat-option>
+                                                </mat-select>
+                                              </div>
+                                            </td>
+                                            <td>
+                                              {{ element.allocatedFrom }}
+                                            </td>
+                                            <td>
+                                              <div *ngIf="!element.isEdit">
+                                                {{ element.allocatedTill }}
+                                              </div>
+
+                                              <mat-form-field *ngIf="element.isEdit">
+                                                <mat-label>dd/mm/yyyy</mat-label>
+                                                <input matInput [matDatepicker]="picker2" formControlName="endDate" />
+                                                <mat-datepicker-toggle matSuffix [for]="picker2">
+                                                </mat-datepicker-toggle>
+                                                <mat-datepicker #picker2></mat-datepicker>
+                                              </mat-form-field>
+                                            </td>
+                                            <td>
+                                              <div *ngIf="!element.isEdit">
+                                                {{ element.bandWidth }}
+                                              </div>
+                                              <div>
+                                                <input *ngIf="element.isEdit" formControlName="bandWidth"
+                                                  class="form-control" style="font-size: 12px" />
+                                              </div>
+                                            </td>
+                                            <td>
+                                              <input *ngIf="!element.isEdit" type="checkbox" disabled
+                                                [checked]="element.shadow" class="form-control" style="
+                                                  width: 15px;
+                                                  height: 15px;
+                                                " />
+                                              <input *ngIf="element.isEdit" type="checkbox" formControlName="shadow"
+                                                class="form-control" style="
+                                                  width: 15px;
+                                                  height: 15px;
+                                                " />
+                                            </td>
+                                            <td>
+                                              <div class="action" style="
+                                                  justify-content: center;
+                                                  display: flex;
+                                                " *ngIf="
+                                                  !element.isEdit &&
+                                                  !element.flag && check
+                                                ">
+                                                <button type="button" class="delete-btn" (click)="
+                                                    onDelete(
+                                                      element.projectTeamMemberId, index,project
+                                                    )
+                                                  ">
+                                                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path
+                                                      d="M4.83333 1.44H4.66667C4.75833 1.44 4.83333 1.368 4.83333 1.28V1.44H11.1667V1.28C11.1667 1.368 11.2417 1.44 11.3333 1.44H11.1667V2.88H12.6667V1.28C12.6667 0.574 12.0688 0 11.3333 0H4.66667C3.93125 0 3.33333 0.574 3.33333 1.28V2.88H4.83333V1.44ZM15.3333 2.88H0.666667C0.297917 2.88 0 3.166 0 3.52V4.16C0 4.248 0.075 4.32 0.166667 4.32H1.425L1.93958 14.78C1.97292 15.462 2.56042 16 3.27083 16H12.7292C13.4417 16 14.0271 15.464 14.0604 14.78L14.575 4.32H15.8333C15.925 4.32 16 4.248 16 4.16V3.52C16 3.166 15.7021 2.88 15.3333 2.88ZM12.5688 14.56H3.43125L2.92708 4.32H13.0729L12.5688 14.56Z"
+                                                      fill="#EB3232" />
+                                                  </svg>
+                                                </button>
+                                                <button class="edit-btn" (click)="onOpenInput(element)">
+                                                  <svg width="17" height="17" viewBox="0 0 17 17" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path
+                                                      d="M16.32 15.385H0.68C0.303875 15.385 0 15.6889 0 16.065V16.83C0 16.9235 0.0765 17 0.17 17H16.83C16.9235 17 17 16.9235 17 16.83V16.065C17 15.6889 16.6961 15.385 16.32 15.385ZM3.09613 13.6C3.13863 13.6 3.18113 13.5957 3.22363 13.5894L6.79787 12.9625C6.84037 12.954 6.88075 12.9349 6.9105 12.903L15.9184 3.89512C15.9381 3.87547 15.9537 3.85211 15.9644 3.82641C15.975 3.8007 15.9805 3.77314 15.9805 3.74531C15.9805 3.71748 15.975 3.68992 15.9644 3.66422C15.9537 3.63851 15.9381 3.61516 15.9184 3.5955L12.3866 0.061625C12.3463 0.02125 12.2931 0 12.2358 0C12.1784 0 12.1253 0.02125 12.0849 0.061625L3.077 9.0695C3.04512 9.10137 3.026 9.13962 3.0175 9.18212L2.39062 12.7564C2.36995 12.8702 2.37734 12.9874 2.41214 13.0977C2.44695 13.2081 2.50813 13.3083 2.59037 13.3896C2.73062 13.5256 2.907 13.6 3.09613 13.6ZM4.52838 9.894L12.2358 2.18875L13.7934 3.74637L6.086 11.4516L4.19688 11.7852L4.52838 9.894Z"
+                                                      fill="#39A9E4" />
+                                                  </svg>
+                                                </button>
+                                              </div>
+                                              <div class="action" style="
+                                                  justify-content: center;
+                                                  display: flex;
+                                                " *ngIf="element.isEdit">
+                                                <button (click)="
+                                                    updatememberHandler(
+                                                      element,
+                                                      index,project
+                                                    )
+                                                  " type="button">
+                                                  <i class="fa fa-check-circle-o font-size"></i>
+                                                </button>
+
+                                                <button (click)="close(element)">
+                                                  <i class="fa fa-times font-size"></i>
+                                                </button>
+                                              </div>
+                                            </td>
+                                          </tr>
+                                        </tbody>
+                                      </table>
+                                    </form>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </mat-card-content>
+                        </mat-card>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </mat-expansion-panel>
+        </mat-accordion>
+      </div>
+    </ng-container>
+  </div>
+  <ng-template #noItems>
+    <div class="no-project">No Project added yet.</div>
+  </ng-template>
+</div>

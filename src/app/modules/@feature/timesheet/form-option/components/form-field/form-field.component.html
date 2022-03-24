@@ -1,0 +1,89 @@
+<div class="main">
+  <div class="inner">
+    <!-- Calendar -->
+    <div class="form_input_wrapper">
+      <label>Week</label>
+
+      <mat-form-field appearance="fill" class="calendar_mat_form_field">
+        <!-- <mat-label>Enter a date range</mat-label> -->
+        <mat-date-range-input [formGroup]="range" [rangePicker]="picker">
+          <input
+            matStartDate
+            formControlName="start"
+            placeholder="Start date"
+          />
+          <input matEndDate formControlName="end" placeholder="End date" />
+        </mat-date-range-input>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-date-range-picker #picker></mat-date-range-picker>
+
+        <mat-error *ngIf="range.controls.start.hasError('matStartDateInvalid')"
+          >Invalid start date</mat-error
+        >
+        <mat-error *ngIf="range.controls.end.hasError('matEndDateInvalid')"
+          >Invalid end date</mat-error
+        >
+      </mat-form-field>
+    </div>
+
+    <!-- Time Spent -->
+    <div class="form_input_wrapper">
+      <label>Time Spent (in hrs)</label>
+      <mat-form-field class="mat_form_field">
+        <mat-select placeholder="Select">
+          <mat-option>1</mat-option>
+          <mat-option>2</mat-option>
+          <mat-option>3</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <p id="time-spent"><span>0</span> Total Time Logged (in hrs)</p>
+    </div>
+
+    <!-- Project -->
+    <div class="form_input_wrapper">
+      <label>Project</label>
+      <mat-form-field class="mat_form_field">
+        <mat-select placeholder="Select">
+          <mat-option>1</mat-option>
+          <mat-option>2</mat-option>
+          <mat-option>3</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <!-- Team Name -->
+    <div class="form_input_wrapper">
+      <label>Team Name</label>
+      <mat-form-field class="mat_form_field">
+        <mat-select placeholder="Select">
+          <mat-option>1</mat-option>
+          <mat-option>2</mat-option>
+          <mat-option>3</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <!-- Task Type -->
+    <div class="form_input_wrapper">
+      <label>Task Type</label>
+      <mat-form-field class="mat_form_field">
+        <mat-select placeholder="Select">
+          <mat-option>1</mat-option>
+          <mat-option>2</mat-option>
+          <mat-option>3</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <!-- Textarea -->
+    <div class="form_input_wrapper">
+      <label>Description</label>
+      <textarea class="description" name="text" cols="30" rows="3"></textarea>
+    </div>
+
+    <!-- Button -->
+    <div class="form_btn_wrapper">
+      <button>Submit</button>
+    </div>
+  </div>
+</div>

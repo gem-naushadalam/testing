@@ -1,0 +1,163 @@
+<div class="main">
+  <div class="inner">
+    <!-- Top -->
+    <div class="top">
+      <h3>APPRAISAL CYCLES</h3>
+      <div class="button">
+        <button (click)="AppraisalCycle()">Create Appraisal Cycle</button>
+        <div *ngIf="cycle">
+          <app-create-appraisal-cycle></app-create-appraisal-cycle>
+        </div>
+        <button (click)="AddParameter()">Add Parameters</button>
+        <div *ngIf="addparams">
+          <app-add-parameters></app-add-parameters>
+        </div>
+        <!-- <button (click)="ViewParameter()">View Parameters</button>
+        <div *ngIf="viewparams">
+          <app-view-parameters></app-view-parameters>
+        </div> -->
+      </div>
+    </div>
+
+    <!-- Middle -->
+    <div class="middle">
+      <h3>ONGOING</h3>
+      <div class="wrapper">
+        <ng-container
+          *ngFor="let appraisalCycle of appraisalCycleData; index as i"
+        >
+          <div
+            class="ongoing-wrapper"
+            *ngIf="
+              appraisalCycle.active && settingBtnIdx != i && eyeBtnIdx != i
+            "
+          >
+            <div class="ongoing-inner">
+              <h4>Appraisal {{ appraisalCycle.year }}</h4>
+              <div class="settings">
+                <button class="eye-btn" (click)="eyeBtnClick(i)">
+                  <img src="../../../../../assets/svg/eye.svg" />
+                </button>
+                <button class="setting-btn" (click)="settingBtnClick(i)">
+                  <img src="../../../../../assets/svg/setting.svg" />
+                </button>
+              </div>
+            </div>
+            <div class="grey"></div>
+          </div>
+          <div class="appraisal-settings" *ngIf="settingBtnIdx === i">
+            <!-- Settings {{ appraisalCycle.appraisalCycleId }} -->
+            <app-form-appraisal-settings
+              [resetIdx]="resetIdx"
+              [formData]="
+                settingBtnIdx >= 0 && appraisalCycleData
+                  ? appraisalCycleData[settingBtnIdx]
+                  : null
+              "
+            ></app-form-appraisal-settings>
+          </div>
+          <div class="app-view-parameters" *ngIf="eyeBtnIdx === i">
+            <!-- Eye Button table {{ appraisalCycle.appraisalCycleId }} -->
+            <app-view-parameters
+              [resetIdx]="resetIdx"
+              [formData]="
+                eyeBtnIdx >= 0 && appraisalCycleData
+                  ? appraisalCycleData[eyeBtnIdx]
+                  : null
+              "
+            ></app-view-parameters>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+
+    <!-- Bottom -->
+    <div class="bottom">
+      <div class="bottom-inner">
+        <h3>PAST APPRAISALS</h3>
+        <div>
+          <div class="past-appraisal-wrapper">
+            <ng-container *ngFor="let appraisalCycle of appraisalCycleData">
+              <div class="appraisal-loop" *ngIf="!appraisalCycle.active">
+                <div class="appraisal-inner">
+                  <h4>Appraisal {{ appraisalCycle.year }}</h4>
+                  <button class="eye-btn">
+                    <img src="../../../../../assets/svg/eye.svg" />
+                  </button>
+                </div>
+                <div class="grey"></div>
+              </div>
+            </ng-container>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <div class="appraisal-loop">
+            <div class="appraisal-inner">
+              <h4>Appraisal 2019</h4>
+              <button class="eye-btn">
+                <svg
+                  width="20"
+                  height="14"
+                  viewBox="0 0 20 14"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M10 3.11176C9.63201 3.11751 9.26672 3.17598 8.9153 3.28537C9.07785 3.57125 9.1644 3.89402 9.16669 4.22287C9.16669 5.29676 8.29613 6.16732 7.22224 6.16732C6.89339 6.16504 6.57062 6.07849 6.28474 5.91593C5.82219 7.52012 6.43804 9.24031 7.81362 10.1864C9.1892 11.1326 11.0159 11.0923 12.3484 10.0865C13.681 9.08074 14.2205 7.33509 13.6878 5.75283C13.155 4.17057 11.6696 3.10672 10 3.11176ZM19.8791 6.49371C17.9962 2.81975 14.2684 0.333984 9.99998 0.333984C5.73158 0.333984 2.00276 2.82148 0.120814 6.49405C-0.0402714 6.8127 -0.0402714 7.18895 0.120814 7.5076C2.0038 11.1816 5.73158 13.6673 9.99998 13.6673C14.2684 13.6673 17.9972 11.1798 19.8791 7.50725C20.0402 7.1886 20.0402 6.81235 19.8791 6.49371ZM9.99995 12.0007C6.5746 12.0007 3.43432 10.0909 1.73849 7.00065C3.43432 3.91037 6.57425 2.00065 9.99995 2.00065C13.4256 2.00065 16.5656 3.91037 18.2614 7.00065C16.5659 10.0909 13.4256 12.0007 9.99995 12.0007Z"
+                    fill="black"
+                  />
+                </svg>
+              </button>
+            </div>
+            <div class="grey"></div>
+          </div> -->
+<!-- <div class="appraisal-loop">
+            <div class="appraisal-inner">
+              <h4>Appraisal 2019</h4>
+              <button class="eye-btn">
+                <svg
+                  width="20"
+                  height="14"
+                  viewBox="0 0 20 14"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M10 3.11176C9.63201 3.11751 9.26672 3.17598 8.9153 3.28537C9.07785 3.57125 9.1644 3.89402 9.16669 4.22287C9.16669 5.29676 8.29613 6.16732 7.22224 6.16732C6.89339 6.16504 6.57062 6.07849 6.28474 5.91593C5.82219 7.52012 6.43804 9.24031 7.81362 10.1864C9.1892 11.1326 11.0159 11.0923 12.3484 10.0865C13.681 9.08074 14.2205 7.33509 13.6878 5.75283C13.155 4.17057 11.6696 3.10672 10 3.11176ZM19.8791 6.49371C17.9962 2.81975 14.2684 0.333984 9.99998 0.333984C5.73158 0.333984 2.00276 2.82148 0.120814 6.49405C-0.0402714 6.8127 -0.0402714 7.18895 0.120814 7.5076C2.0038 11.1816 5.73158 13.6673 9.99998 13.6673C14.2684 13.6673 17.9972 11.1798 19.8791 7.50725C20.0402 7.1886 20.0402 6.81235 19.8791 6.49371ZM9.99995 12.0007C6.5746 12.0007 3.43432 10.0909 1.73849 7.00065C3.43432 3.91037 6.57425 2.00065 9.99995 2.00065C13.4256 2.00065 16.5656 3.91037 18.2614 7.00065C16.5659 10.0909 13.4256 12.0007 9.99995 12.0007Z"
+                    fill="black"
+                  />
+                </svg>
+              </button>
+            </div>
+            <div class="grey"></div>
+          </div> -->
+<!-- <div class="appraisal-loop">
+            <div class="appraisal-inner">
+              <h4>Appraisal 2019</h4>
+              <button class="eye-btn">
+                <svg
+                  width="20"
+                  height="14"
+                  viewBox="0 0 20 14"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M10 3.11176C9.63201 3.11751 9.26672 3.17598 8.9153 3.28537C9.07785 3.57125 9.1644 3.89402 9.16669 4.22287C9.16669 5.29676 8.29613 6.16732 7.22224 6.16732C6.89339 6.16504 6.57062 6.07849 6.28474 5.91593C5.82219 7.52012 6.43804 9.24031 7.81362 10.1864C9.1892 11.1326 11.0159 11.0923 12.3484 10.0865C13.681 9.08074 14.2205 7.33509 13.6878 5.75283C13.155 4.17057 11.6696 3.10672 10 3.11176ZM19.8791 6.49371C17.9962 2.81975 14.2684 0.333984 9.99998 0.333984C5.73158 0.333984 2.00276 2.82148 0.120814 6.49405C-0.0402714 6.8127 -0.0402714 7.18895 0.120814 7.5076C2.0038 11.1816 5.73158 13.6673 9.99998 13.6673C14.2684 13.6673 17.9972 11.1798 19.8791 7.50725C20.0402 7.1886 20.0402 6.81235 19.8791 6.49371ZM9.99995 12.0007C6.5746 12.0007 3.43432 10.0909 1.73849 7.00065C3.43432 3.91037 6.57425 2.00065 9.99995 2.00065C13.4256 2.00065 16.5656 3.91037 18.2614 7.00065C16.5659 10.0909 13.4256 12.0007 9.99995 12.0007Z"
+                    fill="black"
+                  />
+                </svg>
+              </button>
+            </div>
+            <div class="grey"></div>
+          </div> -->

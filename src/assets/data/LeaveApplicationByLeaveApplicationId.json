@@ -1,0 +1,20 @@
+{
+    "userId": 2839,
+    "createdBy": "76",
+    "lastModifiedBy": null,
+    "leaveMapping": null,
+    "firstDayHalfDay": true,
+    "lastDayHalfDay": true,
+    "alternativeContactNo": 999999999,
+    "approverId": 0,
+    "approverRemarks": null,
+    "fromDateId": 7,
+    "availableOnEmail": false,
+    "availableOnMobile": true,
+    "primaryContactNo": 9999999999,
+    "reason": "Test",
+    "statusId": 0,
+    "tillDateId": 9,
+    "leaveRequestApplicationId": 11,
+    "leaveCombination": "1.5CL+0.5PL"
+}

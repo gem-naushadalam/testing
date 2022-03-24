@@ -1,0 +1,97 @@
+* {
+  font-family: "Montserrat", sans-serif !important;
+}
+
+.main_breadcrumb {
+  margin: 0px 30px 30px;
+  text-align: center;
+  display: flex;
+  a {
+    margin: 0 !important;
+    width: 100%;
+    margin-right: 3px !important;
+    padding: 7px 0;
+    position: relative;
+    background: white;
+    display: inline-block;
+    text-decoration: none;
+    text-align: center;
+    color: #979797;
+  }
+}
+
+a:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 0;
+  border-left: 20px solid #f5f6fa;
+  border-top: 17px solid transparent;
+  border-bottom: 17px solid transparent;
+}
+a:before {
+  content: "";
+  position: absolute;
+  right: -20px;
+  bottom: 0;
+  width: 0;
+  height: 0;
+  border-left: 20px solid white;
+  border-top: 17px solid transparent;
+  border-bottom: 17px solid transparent;
+}
+
+.main_breadcrumb a.appraisal_form {
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+  position: relative;
+  z-index: 20;
+  background: white;
+}
+
+.main_breadcrumb a.appraisal_form:after {
+  border: transparent;
+  border-top-left-radius: 4px !important;
+
+  display: block;
+}
+
+//
+
+.main_breadcrumb a.appraisal_form:before {
+  border-left-color: white;
+  z-index: 2;
+}
+
+.main_breadcrumb a.goals {
+  position: relative;
+  z-index: 15;
+}
+
+.main_breadcrumb a.achievements {
+  position: relative;
+  z-index: 10;
+}
+
+.main_breadcrumb a.final_submit {
+  position: relative;
+  z-index: 5;
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+
+.main_breadcrumb a.final_submit:before {
+  border-left: 0;
+  border-bottom: 0;
+}
+
+.active {
+  background-color: #5d38db !important;
+  color: white !important;
+}
+
+.active:before {
+  border-left-color: #5d38db !important;
+}

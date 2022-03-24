@@ -1,0 +1,23 @@
+<div class="main_wrapper">
+  <ul class="nav">
+    <li class="nav-item" *ngFor="let dayList of dayLists">
+      <a
+        class="nav-link btn-primary"
+        (click)="openFormField(dayList)"
+        [ngClass]="{ active: selectedDay === dayList }"
+        >{{ dayList }}</a
+      >
+    </li>
+  </ul>
+</div>
+
+<div>
+  <!-- <app-leave-request></app-leave-request> -->
+  <ng-container *ngIf="selectedDay === 'Monday'"> <app-form-field></app-form-field> </ng-container>
+  <ng-container *ngIf="selectedDay === 'Tuesday'"> Tuesday </ng-container>
+  <ng-container *ngIf="selectedDay === 'Wednesday'"> Wednesday </ng-container>
+  <ng-container *ngIf="selectedDay === 'Thursday'"> Thursday </ng-container>
+  <ng-container *ngIf="selectedDay === 'Friday'"> Friday </ng-container>
+  <ng-container *ngIf="selectedDay === 'Saturday'"> Saturday </ng-container>
+  <ng-container *ngIf="selectedDay === 'Sunday'"> Sunday </ng-container>
+</div>

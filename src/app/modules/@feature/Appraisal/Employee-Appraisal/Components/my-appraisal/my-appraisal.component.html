@@ -1,0 +1,383 @@
+<!-- Appraisal 2019 -->
+<div class="main_wrapper">
+  <div id="main-desktop" *ngIf="!isMobile">
+    <div class="top">
+      <span class="text">Appraisal 2019</span>
+      <div class="main-button">
+        <img class="main-pic" src="../../../../../../assets/img/Group 28.png" />
+        <button
+          (click)="onLoadBasicInformation()"
+          class="btn btn-primary btn-lg"
+        >
+          Start Appraisal
+        </button>
+      </div>
+    </div>
+
+    <!-- Appraisal 2018 -->
+
+    <div class="middle">
+      <div class="button">
+        <span class="text">Appraisal 2018</span>
+        <a routerLink="basic-info">
+          <button class="btn btn-primary view-form"  (click)="onLoadFinalSubmit()">View Form</button>
+        </a>
+      </div>
+      <div class="wrapper-progressBar">
+        <ul class="progressBar">
+          <li class="active">
+            <img
+              class="icons"
+              src="../../../../../../assets/img/001-vote copy.png"
+            /><br />
+
+            <i class="fa fa-check"></i>
+
+            <p class="stepper-text">CREATED</p>
+
+            <p class="date">29 Mar 2019</p>
+          </li>
+          <li>
+            <img src="../../../../../../assets/img/003-clipboard.png" /><br />
+            <i class="fa"></i>
+            <p class="stepper-text">self appraisal</p>
+            <p class="date">29 Mar 2019</p>
+          </li>
+          <li>
+            <img
+              class="img3"
+              src="../../../../../../assets/img/003-checklist.png"
+            /><br />
+            <i class="fa"></i>
+            <p class="stepper-text">reviewed</p>
+            <p class="date">29 Mar 2019</p>
+          </li>
+          <li>
+            <img
+              class="img4"
+              src="../../../../../../assets/img/001-checked-files.png"
+            /><br />
+            <i class="fa"></i><br />
+            <p class="stepper-text">approved</p>
+            <p class="date">29 Mar 2019</p>
+          </li>
+          <li>
+            <img
+              class="last-img"
+              src="../../../../../../assets/img/encrpyted-file.png"
+            /><br />
+            <i class="fa"></i><br />
+            <p class="stepper-text">closed</p>
+            <p class="date">29 Mar 2019</p>
+          </li>
+        </ul>
+      </div>
+      <div class="approve">
+        <img src="../../../../../../assets/img/user.jpg" alt="" />
+        <div>
+          <p class="Designation">Appraiser</p>
+          <p class="name">Amit Handa</p>
+        </div>
+        <div class="approver">
+          <img src="../../../../../../assets/img/user.jpg" alt="" />
+          <div>
+            <p class="Designation">Approver</p>
+            <p class="name">Amit Handa</p>
+          </div>
+        </div>
+        <div class="approver">
+          <img src="../../../../../../assets/img/user.jpg" alt="" />
+          <div>
+            <p class="Designation">HR</p>
+            <p class="name">Priyanka Gubrele</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Appraisal 2017 -->
+
+    <div class="bottom">
+      <div class="button">
+        <span class="text">Appraisal 2017</span>
+        <button class="btn btn-primary view-form" (click)="onLoadFinalSubmit()">View Form</button>
+      </div>
+      <div class="wrapper-progressBar" id="completed">
+        <ul>
+          <li>
+            <img
+              class="icons"
+              src="../../../../../../assets/img/001-vote copy.png"
+            /><br />
+            <i class="fa fa-check"></i><br />
+            <p class="stepper-text">CREATED</p>
+
+            <p class="date">29 Mar 2019</p>
+          </li>
+          <li>
+            <img src="../../../../../../assets/img/003-clipboard.png" /><br />
+            <i class="fa fa-check"></i><br />
+            <p class="stepper-text">self appraisal</p>
+
+            <p class="date">29 Mar 2019</p>
+          </li>
+          <li>
+            <img
+              class="img3"
+              src="../../../../../../assets/img/003-checklist.png"
+            /><br />
+            <i class="fa fa-check"></i><br />
+            <p class="stepper-text">reviewed</p>
+
+            <p class="date">29 Mar 2019</p>
+          </li>
+          <li>
+            <img
+              class="img4"
+              src="../../../../../../assets/img/001-checked-files.png"
+            /><br />
+            <i class="fa fa-check"></i><br />
+            <p class="stepper-text">approved</p>
+
+            <p class="date">29 Mar 2019</p>
+          </li>
+          <li>
+            <img
+              class="last-img"
+              src="../../../../../../assets/img/encrpyted-file.png"
+            /><br />
+            <i class="fa fa-check"></i><br />
+            <p class="stepper-text">closed</p>
+
+            <p class="date">29 Mar 2019</p>
+          </li>
+        </ul>
+      </div>
+      <div class="approve">
+        <img src="../../../../../../assets/img/user.jpg" alt="" />
+        <div>
+          <p class="Designation">Appraiser</p>
+          <p class="name">Amit Handa</p>
+        </div>
+        <div class="approver">
+          <img src="../../../../../../assets/img/user.jpg" alt="" />
+          <div>
+            <p class="Designation">Approver</p>
+            <p class="name">Amit Handa</p>
+          </div>
+        </div>
+
+        <div class="approver">
+          <img src="../../../../../../assets/img/user.jpg" alt="" />
+          <div>
+            <p class="Designation">Hr</p>
+            <p class="name">Priyanka Gubrele</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="main-mobile" class="mobile-view" *ngIf="isMobile">
+    <div class="main-inner">
+      <div class="items-wrapper">
+        <div class="itmes-inner">
+          <div class="left">
+            <div class="title">
+              <!-- <p></p> -->
+              <span>2019</span>
+            </div>
+            <div class="btn-wrapper">
+              <button>START APPRAISAL</button>
+            </div>
+          </div>
+          <div class="right">
+            <img
+              src="../../../../../../../assets/img//Group 28.png"
+              height="70px"
+              width="60px"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="items-wrapper">
+        <mat-accordion>
+          <mat-expansion-panel hideToggle #panelH>
+            <mat-expansion-panel-header class="itmes-inner">
+              <div class="left">
+                <div class="title">
+                  <mat-panel-title>
+                    <p>APPRAISAL</p>
+                    <span>2018</span>
+                  </mat-panel-title>
+                </div>
+                <div class="btn-wrapper">
+                  <button (click)="panelH.open()">View Form</button>
+                </div>
+              </div>
+              <div class="right">
+                <img
+                  src="../../../../../../../assets/img//Group 28.png"
+                  height="70px"
+                  width="60px"
+                />
+              </div>
+            </mat-expansion-panel-header>
+            <div class="expandible">
+              <div class="stepper-item">
+                <i class="fa fa-check active"></i>
+                <div class="content">
+                  <span class="stepper-text">Created</span>
+                  <br />
+                  <span class="date">29 Mar 2019</span>
+                </div>
+              </div>
+              <div class="stepper-item">
+                <i class="fa fa-check"></i>
+                <div class="content">
+                  <span class="stepper-text">Self-Appraisal</span>
+                  <br />
+                  <span class="date">29 Mar 2019</span>
+                </div>
+              </div>
+              <div class="stepper-item">
+                <i class="fa fa-check"></i>
+                <div class="content">
+                  <span class="stepper-text">Reviewed</span>
+                  <br />
+                  <span class="date">29 Mar 2019</span>
+                </div>
+              </div>
+              <div class="stepper-item">
+                <i class="fa fa-check"></i>
+                <div class="content">
+                  <span class="stepper-text">Approved</span>
+                  <br />
+                  <span class="date">29 Mar 2019</span>
+                </div>
+              </div>
+              <div class="stepper-item last">
+                <i class="fa fa-check"></i>
+                <div class="content">
+                  <span class="stepper-text">Closed</span>
+                  <br />
+                  <span class="date">29 Mar 2019</span>
+                </div>
+              </div>
+              <div class="approves">
+                <img src="../../../../../../assets/img/user.jpg" alt="" />
+                <div>
+                  <p class="Designation">Appraiser</p>
+                  <p class="name">Amit Handa</p>
+                </div>
+                <div class="approver">
+                  <img src="../../../../../../assets/img/user.jpg" alt="" />
+                  <div>
+                    <p class="Designation">Approver</p>
+                    <p class="name">Amit Handa</p>
+                  </div>
+                </div>
+                <div class="approver">
+                  <img src="../../../../../../assets/img/user.jpg" alt="" />
+                  <div>
+                    <p class="Designation">HR</p>
+                    <p class="name">Priyanka Gubrele</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </mat-expansion-panel>
+        </mat-accordion>
+      </div>
+      <div class="items-wrapper">
+        <mat-accordion>
+          <mat-expansion-panel hideToggle #panelv>
+            <mat-expansion-panel-header class="itmes-inner">
+              <div class="left">
+                <div class="title">
+                  <mat-panel-title>
+                    <p>APPRAISAL</p>
+                    <span>2017</span>
+                  </mat-panel-title>
+                </div>
+                <div class="btn-wrapper">
+                  <button (click)="panelv.open()">View Form</button>
+                </div>
+              </div>
+              <div class="right">
+                <img
+                  src="../../../../../../../assets/img//Group 28.png"
+                  height="70px"
+                  width="60px"
+                />
+              </div>
+            </mat-expansion-panel-header>
+            <div class="expandible">
+              <div class="stepper-item">
+                <i class="fa fa-check active"></i>
+                <div class="content">
+                  <span class="stepper-text">Created</span>
+                  <br />
+                  <span class="date">29 Mar 2019</span>
+                </div>
+              </div>
+              <div class="stepper-item">
+                <i class="fa fa-check"></i>
+                <div class="content">
+                  <span class="stepper-text">Self-Appraisal</span>
+                  <br />
+                  <span class="date">29 Mar 2019</span>
+                </div>
+              </div>
+              <div class="stepper-item">
+                <i class="fa fa-check"></i>
+                <div class="content">
+                  <span class="stepper-text">Reviewed</span>
+                  <br />
+                  <span class="date">29 Mar 2019</span>
+                </div>
+              </div>
+              <div class="stepper-item">
+                <i class="fa fa-check"></i>
+                <div class="content">
+                  <span class="stepper-text">Approved</span>
+                  <br />
+                  <span class="date">29 Mar 2019</span>
+                </div>
+              </div>
+              <div class="stepper-item last">
+                <i class="fa fa-check acitve"></i>
+                <div class="content">
+                  <span class="stepper-text">Closed</span>
+                  <br />
+                  <span class="date">29 Mar 2019</span>
+                </div>
+              </div>
+              <div class="approves">
+                <img src="../../../../../../assets/img/user.jpg" alt="" />
+                <div>
+                  <p class="Designation">Appraiser</p>
+                  <p class="name">Amit Handa</p>
+                </div>
+                <div class="approver">
+                  <img src="../../../../../../assets/img/user.jpg" alt="" />
+                  <div>
+                    <p class="Designation">Approver</p>
+                    <p class="name">Amit Handa</p>
+                  </div>
+                </div>
+                <div class="approver">
+                  <img src="../../../../../../assets/img/user.jpg" alt="" />
+                  <div>
+                    <p class="Designation">HR</p>
+                    <p class="name">Priyanka Gubrele</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </mat-expansion-panel>
+        </mat-accordion>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,88 @@
+<div class="outduty_main_wrapper">
+  <form [formGroup] ="submitOutduty" (ngSubmit) = "onPostOutduty()">
+  <div class="inner">
+    <div class="left">
+      <div class="calendar">
+        <mat-calendar
+        [ngClass]= "{'active' : !selectedRangeValue.end}"
+          #calendar
+          [selected]="selectedRangeValue"
+          (selectedChange)="selectedChange($event)"
+          [dateClass]="dateClass()"
+          [minDate]="startDate"
+          [dateFilter]="filterDates"
+        >
+        </mat-calendar>
+        <span class="text-danger" *ngIf="!selectedRangeValue.end">End Date is required</span>
+      </div>
+      <div class="info">
+        <!-- <span class="Attention">Info: </span> -->
+        <span class="s">*You are taking {{numofDates}} {{ leaveType }} from <tr></tr>{{ selectedRangeValue.start | date:
+          "yyyy-MM-dd" }} to
+          {{ selectedRangeValue.end | date: "yyyy-MM-dd" }}</span>
+      </div>
+    </div>
+    <div class="right">
+      <div class="leave_type_wrapper">
+        <span class="leave">LEAVE TYPE</span>
+
+        <div class="btn-group-toggle leave-buttons" data-toggle="buttons">
+          <mat-button-toggle-group  formControlName ="outingType" aria-label="Font Style">
+            <mat-button-toggle *ngFor="let item of combination;let i = index"  (click)="onValChange(item)" value="{{item}}">
+              {{item}}</mat-button-toggle>
+          </mat-button-toggle-group>        
+        </div>
+        <span class="text-danger" *ngIf="
+        submitOutduty.controls['outingType'].hasError('required') &&
+        submitOutduty.controls['outingType'].touched
+      ">Make a Selection</span>   
+      
+      </div>
+      <div class="contact-wrapper">
+        <div class="secondary_contact_wrapper">
+          <label>Other Contact Number</label>
+          <input type="phone" placeholder="Contact Number" formControlName="contactNo" />
+        </div>
+      </div>
+      <div class="reason-button">
+      <div class="reason_wrapper">
+        <label>Reason</label>
+        <div class="calc">
+          <textarea rows="4" formControlName = "reason" class="reasons">
+          <span class="text-danger" *ngIf="
+          submitOutduty.controls['reason'].hasError('required') &&
+          submitOutduty.controls['reason'].touched
+        ">Reason is required</span>
+        </textarea>
+        </div>
+      </div>
+      <div class="button">
+        <button type="button" class="btn btn-primary reset btn-lg" (click) ="reset()">Reset</button>
+
+        <button type="submit" class="btn btn-success btn-lg" [disabled]="!submitOutduty.valid || !selectedRangeValue">
+          <span [matTooltip]="!submitOutduty.valid ? 'Please select Date Range,Leave Type and Reason ' : ''" [matTooltipPosition]="'above'" [matTooltipClass]="'tooltip-pd'">APPLY</span></button>
+       
+      </div>
+      </div>
+    </div>
+  </div>
+  </form>
+  <div class="btn-group-toggle button-top" data-toggle="buttons">
+    <label class="btn btn-primary btn-lg active" (click)="history()">
+      <input type="radio" name="options" id="option2" checked />
+      Leave History
+    </label>
+  
+    <label class="btn btn-primary btn-lg" (click)="status()">
+      <input type="radio" name="options" id="option2" />
+       Review Request
+    </label>
+  </div>
+  <div [hidden] = "!leave_history" style="margin-bottom: 20px;">
+    <app-table   (action)="delete($event)" class="w-100" [tableData]='tableData' [displayedColumns] = 'displayedColumns' ></app-table>  
+  
+  </div>
+  <div [hidden] = "!review_status" style="margin-bottom: 20px;">
+    <app-review-table (approved)="approve($event)" (rejected)="reject($event)"(bulkApprove) = "bulk($event)" class class = "w-100" [displayedColumns] = 'reviewdisplayedColumns' [tableData] = 'reviewData'></app-review-table>
+  </div>
+</div>
